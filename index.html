@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Key Phantom - QTuan</title>
+
+<style>
+* { box-sizing: border-box; }
+
+:root {
+  --blue: #168bff;
+  --yellow: #ffd84d;
+  --white: #fff;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #07111f;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(3,10,25,.60),
+                    rgba(3,10,25,.88)),
+    url("https://i.ibb.co/qYn7C0Mn/8945ecd69bcdf96bbf90093ae108d1ad.jpg") center/cover no-repeat;
+}
+
+.page {
+  max-width: 480px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 42px 24px 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.avatar {
+  width: 125px;
+  height: 125px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--yellow);
+  box-shadow: 0 0 24px #168bff99;
+}
+
+h1 {
+  margin: 22px 0 8px;
+  font-size: 30px;
+  font-weight: 900;
+  text-shadow: 0 0 15px #168bff;
+}
+
+h1 span { color: var(--yellow); }
+
+.author {
+  margin: 0;
+  color: #e1eaff;
+}
+
+.author b { color: var(--yellow); }
+
+.line {
+  width: 90px;
+  height: 3px;
+  margin: 23px 0;
+  border-radius: 5px;
+  background: linear-gradient(90deg, var(--blue), var(--yellow));
+}
+
+.getkey {
+  width: 100%;
+  max-width: 310px;
+  padding: 17px;
+  border: 2px solid var(--yellow);
+  border-radius: 14px;
+  background: linear-gradient(120deg, #0878ee, #1554c9);
+  color: white;
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  box-shadow: 0 0 22px #168bff55;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.getkey:active { transform: scale(.97); }
+
+#result {
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #0b1729;
+  color: var(--yellow);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+#server-status {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+.links {
+  width: 100%;
+  display: grid;
+  gap: 13px;
+  margin-top: 27px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border: 1px solid #168bff;
+  border-radius: 12px;
+  background: #101c30dd;
+  color: white;
+  text-decoration: none;
+  text-align: left;
+  transition: .2s;
+}
+
+.link:hover {
+  border-color: var(--yellow);
+  transform: translateY(-2px);
+}
+
+.icon {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #168bff;
+  font-size: 22px;
+}
+
+.link strong {
+  display: block;
+  color: var(--yellow);
+  margin-bottom: 5px;
+}
+
+.link small { color: #d5e4ff; }
+
+footer {
+  margin-top: 30px;
+  color: #91a6c5;
+  font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+<div class="bg"></div>
+
+<main class="page">
+  <img class="avatar" src="https://i.ibb.co/h1nNpyr6/a1ecd5a5bc6bbf9b713d399871c91cac.jpg" alt="QTuan avatar">
+
+  <h1>FREE KEY <span>PHANTOM</span></h1>
+  <p class="author">By <b>QTuan</b></p>
+
+  <div class="line"></div>
+
+  <button class="getkey" id="getKeyBtn" onclick="startGetKey()">
+    🔑 GETKEY
+  </button>
+
+  <div id="result">Nhấn GETKEY để bắt đầu nhận key miễn phí.</div>
+  <div id="server-status">🟢 Hệ thống Getkey đã sẵn sàng hoạt động!</div>
+
+  <div class="links">
+    <a class="link" href="https://www.tiktok.com/@riskmmm.10?_r=1&_t=ZS-9AwHNWUarHM" target="_blank">
+      <span class="icon">♪</span>
+      <span>
+        <strong>TIKTOK</strong>
+        <small>Theo dõi kênh TikTok</small>
+      </span>
+    </a>
+
+    <a class="link" href="https://zalo.me/g/bttzjw2jwt7vxiyunpx6" target="_blank">
+      <span class="icon">Z</span>
+      <span>
+        <strong>NHÓM ZALO</strong>
+        <small>Tham gia cộng đồng</small>
+      </span>
+    </a>
+
+    <a class="link" href="https://t.me/+dCLHC7jQNnQ0Y2Fl" target="_blank">
+      <span class="icon">➤</span>
+      <span>
+        <strong>NHÓM TELEGRAM</strong>
+        <small>Cập nhật thông tin key</small>
+      </span>
+    </a>
+  </div>
+
+  <footer>© 2026 FREE KEY PHANTOM · QTuan</footer>
+</main>
+
+<script>
+// Đường dẫn Backend Render của bạn
+const BACKEND_URL = "https://tuanq.onrender.com";
+
+async function startGetKey() {
+  const resultBox = document.getElementById("result");
+  const btn = document.getElementById("getKeyBtn");
+  
+  resultBox.textContent = "⏳ Đang tạo phiên và chuyển hướng đến trang vượt link...";
+  btn.style.opacity = "0.6";
+  btn.style.pointerEvents = "none";
+
+  try {
+    let res = await fetch(`${BACKEND_URL}/api/start`);
+    let data = await res.json();
+    
+    if (data.success && data.redirectUrl) {
+      window.location.href = data.redirectUrl; // Chuyển sang Link4m
+    } else {
+      alert("Lỗi khởi tạo phiên!");
+      btn.style.opacity = "1";
+      btn.style.pointerEvents = "auto";
+    }
+  } catch (err) {
+    alert("Không thể kết nối đến máy chủ Backend!");
+    btn.style.opacity = "1";
+    btn.style.pointerEvents = "auto";
+  }
+}
+</script>
+</body>
+</html>

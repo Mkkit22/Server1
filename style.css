@@ -1,0 +1,24 @@
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      rgba(3,10,25,.35),
+      rgba(3,10,25,.75)
+    ),
+    url("https://i.ibb.co/qYn7C0Mn/8945ecd69bcdf96bbf90093ae108d1ad.jpg")
+    center / cover no-repeat;
+}
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      rgba(3,10,25,.35),
+      rgba(3,10,25,.75)
+    ),
+    url("https://i.ibb.co/qYn7C0Mn/8945ecd69bcdf96bbf90093ae108d1ad.jpg")
+    center / cover no-repeat;
+}
