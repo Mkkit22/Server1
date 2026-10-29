@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Nạp Key Phantom</title>
+    <style>
+        body { font-family: sans-serif; background: #0f172a; color: #fff; padding: 30px 20px; }
+        .card { background: #1e293b; max-width: 400px; margin: 0 auto; padding: 25px; border-radius: 12px; }
+        input, textarea { width: 100%; padding: 10px; margin-top: 10px; margin-bottom: 15px; background: #0f172a; border: 1px solid #334155; color: #fff; border-radius: 6px; box-sizing: border-box; }
+        textarea { height: 120px; resize: vertical; }
+        .btn { background: #3b82f6; color: white; border: none; padding: 12px; width: 100%; font-size: 16px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .msg { margin-top: 15px; font-weight: bold; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>🛠️ Quản Trị Nạp Key</h2>
+    <label>Mật khẩu Admin:</label>
+    <input type="password" id="passInput" placeholder="Nhập mật khẩu admin...">
+
+    <label>Danh sách Key (Mỗi key một dòng):</label>
+    <textarea id="keysInput" placeholder="KEY_ABC_1\nKEY_ABC_2\nKEY_ABC_3"></textarea>
+
+    <button class="btn" onclick="addKeys()">➕ NẠP KEY VÀO KHO</button>
+    <div class="msg" id="msgBox"></div>
+</div>
+
+<script>
+    const BACKEND_URL = "https://tuanq.onrender.com";
+
+    async function addKeys() {
+        const pass = document.getElementById('passInput').value;
+        const rawKeys = document.getElementById('keysInput').value;
+        const msgBox = document.getElementById('msgBox');
+
+        if (!pass || !rawKeys) {
+            alert("Vui lòng nhập đầy đủ mật khẩu và danh sách key!");
+            return;
+        }
+
+        // Chuyển danh sách xuống dòng thành mảng, loại bỏ khoảng trắng thừa
+        const keysArray = rawKeys.split('\n').map(k => k.trim()).filter(k => k.length > 0);
+
+        if (keysArray.length === 0) {
+            alert("Danh sách key trống!");
+            return;
+        }
+
+        msgBox.style.color = "#facc15";
+        msgBox.innerText = "⏳ Đang gửi dữ liệu...";
+
+        try {
+            const res = await fetch(`${BACKEND_URL}/api/admin/add-keys`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ pass: pass, keys: keysArray })
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                msgBox.style.color = "#10b981";
+                msgBox.innerText = data.message;
+                document.getElementById('keysInput').value = ""; // Xóa ô nhập sau khi thêm thành công
+            } else {
+                msgBox.style.color = "#ef4444";
+                msgBox.innerText = "Lỗi: " + (data.message || "Sai mật khẩu hoặc lỗi server");
+            }
+        } catch (e) {
+            msgBox.style.color = "#ef4444";
+            msgBox.innerText = "Lỗi kết nối tới máy chủ!";
+        }
+    }
+</script>
+
+</body>
+</html>
