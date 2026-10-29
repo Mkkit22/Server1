@@ -6,11 +6,12 @@
     <title>Admin - Nạp Key Phantom</title>
     <style>
         body { font-family: sans-serif; background: #0f172a; color: #fff; padding: 30px 20px; }
-        .card { background: #1e293b; max-width: 400px; margin: 0 auto; padding: 25px; border-radius: 12px; }
+        .card { background: #1e293b; max-width: 400px; margin: 0 auto; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
         input, textarea { width: 100%; padding: 10px; margin-top: 10px; margin-bottom: 15px; background: #0f172a; border: 1px solid #334155; color: #fff; border-radius: 6px; box-sizing: border-box; }
         textarea { height: 120px; resize: vertical; }
         .btn { background: #3b82f6; color: white; border: none; padding: 12px; width: 100%; font-size: 16px; border-radius: 6px; cursor: pointer; font-weight: bold; }
-        .msg { margin-top: 15px; font-weight: bold; text-align: center; }
+        .btn:active { background: #2563eb; }
+        .msg { margin-top: 15px; font-weight: bold; text-align: center; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -21,7 +22,7 @@
     <input type="password" id="passInput" placeholder="Nhập mật khẩu admin...">
 
     <label>Danh sách Key (Mỗi key một dòng):</label>
-    <textarea id="keysInput" placeholder="KEY_ABC_1\nKEY_ABC_2\nKEY_ABC_3"></textarea>
+    <textarea id="keysInput" placeholder="KEY_ABC_1&#10;KEY_ABC_2&#10;KEY_ABC_3"></textarea>
 
     <button class="btn" onclick="addKeys()">➕ NẠP KEY VÀO KHO</button>
     <div class="msg" id="msgBox"></div>
@@ -31,7 +32,7 @@
     const BACKEND_URL = "https://tuanq.onrender.com";
 
     async function addKeys() {
-        const pass = document.getElementById('passInput').value;
+        const pass = document.getElementById('passInput').value.trim();
         const rawKeys = document.getElementById('keysInput').value;
         const msgBox = document.getElementById('msgBox');
 
@@ -40,7 +41,6 @@
             return;
         }
 
-        // Chuyển danh sách xuống dòng thành mảng, loại bỏ khoảng trắng thừa
         const keysArray = rawKeys.split('\n').map(k => k.trim()).filter(k => k.length > 0);
 
         if (keysArray.length === 0) {
@@ -49,28 +49,38 @@
         }
 
         msgBox.style.color = "#facc15";
-        msgBox.innerText = "⏳ Đang gửi dữ liệu...";
+        msgBox.innerText = "⏳ Đang gửi dữ liệu lên server...";
 
         try {
             const res = await fetch(`${BACKEND_URL}/api/admin/add-keys`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
                 body: JSON.stringify({ pass: pass, keys: keysArray })
             });
 
-            const data = await res.json();
+            const textResponse = await res.text();
+            let data;
+            try {
+                data = JSON.parse(textResponse);
+            } catch (err) {
+                throw new Error("Phản hồi từ server không hợp lệ: " + textResponse);
+            }
 
-            if (data.success) {
+            if (res.ok && data.success) {
                 msgBox.style.color = "#10b981";
                 msgBox.innerText = data.message;
-                document.getElementById('keysInput').value = ""; // Xóa ô nhập sau khi thêm thành công
+                document.getElementById('keysInput').value = ""; 
             } else {
                 msgBox.style.color = "#ef4444";
                 msgBox.innerText = "Lỗi: " + (data.message || "Sai mật khẩu hoặc lỗi server");
             }
         } catch (e) {
             msgBox.style.color = "#ef4444";
-            msgBox.innerText = "Lỗi kết nối tới máy chủ!";
+            msgBox.innerText = "Lỗi kết nối tới máy chủ! (Kiểm tra lại Render)";
+            console.error(e);
         }
     }
 </script>
