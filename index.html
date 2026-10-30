@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hệ Thống Đang Bảo Trì - QTuan</title>
+<title>Free Key Phantom - QTuan</title>
 
-<!-- Nhập Google Font hiện đại -->
+<!-- Nhập Google Font hiện đại, sắc nét phù hợp với Liquid Glass -->
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -26,7 +26,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Background rực rỡ phong cách Liquid Glass */
+/* Background sáng sủa, rực rỡ hơn */
 .bg {
   position: fixed;
   inset: 0;
@@ -47,10 +47,9 @@ body {
   align-items: center;
   flex-direction: column;
   text-align: center;
-  justify-content: center;
 }
 
-/* Hiệu ứng Kính lỏng */
+/* Hiệu ứng Kính lỏng sáng sủa hơn */
 .glass-card {
   width: 100%;
   background: rgba(255, 255, 255, 0.08);
@@ -77,7 +76,7 @@ body {
 
 h1 {
   margin: 18px 0 6px;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
   letter-spacing: 0.5px;
   text-shadow: 0 0 20px rgba(22, 139, 255, 0.9);
@@ -103,20 +102,64 @@ h1 span { color: var(--yellow); }
   box-shadow: 0 0 12px var(--blue);
 }
 
-/* Thông báo bảo trì */
-.maintenance-notice {
-  background: rgba(255, 216, 77, 0.1);
-  border: 1px solid rgba(255, 216, 77, 0.3);
-  border-radius: 16px;
+/* --- NÚT GETKEY VIỀN VÀNG CHUẨN LIQUID GLASS --- */
+.getkey {
+  width: 100%;
+  max-width: 290px;
   padding: 16px;
-  color: #fef08a;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1.5;
-  box-shadow: inset 0 0 15px rgba(255, 216, 77, 0.05);
+  border-radius: 18px;
+  background: rgba(255, 216, 77, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  /* Viền xung quanh chuyển sang màu vàng */
+  border: 1px solid rgba(255, 216, 77, 0.5);
+  border-top: 1px solid rgba(255, 216, 77, 0.8);
+  border-left: 1px solid rgba(255, 216, 77, 0.8);
+  color: var(--yellow);
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  /* Đổ bóng ánh vàng */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+              inset 0 1px 4px rgba(255, 255, 255, 0.4),
+              inset 0 0 15px rgba(255, 216, 77, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* Khối các liên kết nhóm */
+.getkey:hover {
+  background: rgba(255, 216, 77, 0.2);
+  border-color: rgba(255, 216, 77, 0.9);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(255, 216, 77, 0.3),
+              inset 0 1px 6px rgba(255, 255, 255, 0.6),
+              0 0 25px rgba(255, 216, 77, 0.4);
+}
+
+.getkey:active { transform: scale(.96); }
+
+#result {
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--yellow);
+  font-size: 13px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+#server-status {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #4ade80;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+}
+
+/* Khối các liên kết */
 .links {
   width: 100%;
   display: grid;
@@ -149,6 +192,7 @@ h1 span { color: var(--yellow); }
   box-shadow: 0 8px 25px rgba(22, 139, 255, 0.35);
 }
 
+/* Khung chứa Icon app */
 .icon-box {
   width: 44px;
   height: 44px;
@@ -193,21 +237,32 @@ footer {
   <div class="glass-card">
     <img class="avatar" src="https://i.ibb.co/h1nNpyr6/a1ecd5a5bc6bbf9b713d399871c91cac.jpg" alt="QTuan avatar">
 
-    <h1>HỆ THỐNG <span>BẢO TRÌ</span></h1>
+    <h1>FREE KEY <span>PHANTOM</span></h1>
     <p class="author">By <b>QTuan</b></p>
 
     <div class="line"></div>
 
-    <div class="maintenance-notice">
-      ⚠️ Hệ thống đang bảo trì, vui lòng tham gia nhóm để nhận thông báo mới nhất!
-    </div>
+    <button class="getkey" id="getKeyBtn" onclick="startGetKey()">
+      🔑 GETKEY
+    </button>
+
+    <div id="result">Nhấn GETKEY để bắt đầu nhận key miễn phí.</div>
+    <div id="server-status">🟢 Hệ thống Getkey đã sẵn sàng hoạt động!</div>
 
     <div class="links">
+      <a class="link" href="https://www.tiktok.com/@riskmmm.10?_r=1&_t=ZS-9AwHNWUarHM" target="_blank">
+        <span class="icon-box"><img src="https://i.ibb.co/wZsqkgh8/1793251345194.png" alt="TikTok"></span>
+        <span>
+          <strong>TIKTOK</strong>
+          <small>Theo dõi kênh TikTok</small>
+        </span>
+      </a>
+
       <a class="link" href="https://zalo.me/g/bttzjw2jwt7vxiyunpx6" target="_blank">
         <span class="icon-box"><img src="https://i.ibb.co/4nMTcjFg/1793250914410.png" alt="Zalo"></span>
         <span>
           <strong>NHÓM ZALO</strong>
-          <small>Tham gia cộng đồng Zalo</small>
+          <small>Tham gia cộng đồng</small>
         </span>
       </a>
 
@@ -215,7 +270,7 @@ footer {
         <span class="icon-box"><img src="https://i.ibb.co/hRq1sFQP/1793251373352.png" alt="Telegram"></span>
         <span>
           <strong>NHÓM TELEGRAM</strong>
-          <small>Cập nhật thông tin qua Telegram</small>
+          <small>Cập nhật thông tin key</small>
         </span>
       </a>
     </div>
@@ -223,5 +278,35 @@ footer {
 
   <footer>© 2026 FREE KEY PHANTOM · QTuan</footer>
 </main>
+
+<script>
+const BACKEND_URL = "https://tuanq.onrender.com";
+
+async function startGetKey() {
+  const resultBox = document.getElementById("result");
+  const btn = document.getElementById("getKeyBtn");
+  
+  resultBox.textContent = "⏳ Đang tạo phiên và chuyển hướng đến trang vượt link...";
+  btn.style.opacity = "0.6";
+  btn.style.pointerEvents = "none";
+
+  try {
+    let res = await fetch(`${BACKEND_URL}/api/start`);
+    let data = await res.json();
+    
+    if (data.success && data.redirectUrl) {
+      window.location.href = data.redirectUrl;
+    } else {
+      alert("Lỗi khởi tạo phiên!");
+      btn.style.opacity = "1";
+      btn.style.pointerEvents = "auto";
+    }
+  } catch (err) {
+    alert("Không thể kết nối đến máy chủ Backend!");
+    btn.style.opacity = "1";
+    btn.style.pointerEvents = "auto";
+  }
+}
+</script>
 </body>
 </html>
