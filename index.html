@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Free Key Phantom - QTuan</title>
 
-<!-- Nhập Google Font hiện đại, sắc nét phù hợp với Liquid Glass -->
+<!-- Nhập Google Font hiện đại -->
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -14,6 +14,7 @@
 :root {
   --blue: #168bff;
   --yellow: #ffd84d;
+  --green: #4ade80;
   --white: #fff;
 }
 
@@ -26,7 +27,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Background sáng sủa, rực rỡ hơn */
 .bg {
   position: fixed;
   inset: 0;
@@ -49,7 +49,6 @@ body {
   text-align: center;
 }
 
-/* Hiệu ứng Kính lỏng sáng sủa hơn */
 .glass-card {
   width: 100%;
   background: rgba(255, 255, 255, 0.08);
@@ -65,8 +64,8 @@ body {
 }
 
 .avatar {
-  width: 115px;
-  height: 115px;
+  width: 110px;
+  height: 110px;
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid var(--yellow);
@@ -75,8 +74,8 @@ body {
 }
 
 h1 {
-  margin: 18px 0 6px;
-  font-size: 28px;
+  margin: 16px 0 6px;
+  font-size: 26px;
   font-weight: 800;
   letter-spacing: 0.5px;
   text-shadow: 0 0 20px rgba(22, 139, 255, 0.9);
@@ -87,7 +86,7 @@ h1 span { color: var(--yellow); }
 .author {
   margin: 0;
   color: #e2e8f0;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
 }
 
@@ -96,47 +95,147 @@ h1 span { color: var(--yellow); }
 .line {
   width: 80px;
   height: 3px;
-  margin: 20px auto;
+  margin: 18px auto;
   border-radius: 5px;
   background: linear-gradient(90deg, var(--blue), var(--yellow));
   box-shadow: 0 0 12px var(--blue);
 }
 
-/* --- NÚT GETKEY VIỀN VÀNG CHUẨN LIQUID GLASS --- */
+.instruction-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--yellow);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Danh sách các nhiệm vụ */
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.task-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.task-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 216, 77, 0.5);
+}
+
+.task-btn.completed {
+  background: rgba(74, 222, 128, 0.15);
+  border-color: rgba(74, 222, 128, 0.5);
+  color: #4ade80;
+}
+
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.task-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.task-status {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.task-btn.completed .task-status {
+  background: rgba(74, 222, 128, 0.3);
+  color: #4ade80;
+}
+
+/* Thanh tiến độ */
+.progress-box {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #cbd5e1;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--yellow));
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+/* NÚT GETKEY (Khóa / Mở khóa) */
 .getkey {
   width: 100%;
-  max-width: 290px;
   padding: 16px;
   border-radius: 18px;
-  background: rgba(255, 216, 77, 0.1);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  /* Viền xung quanh chuyển sang màu vàng */
-  border: 1px solid rgba(255, 216, 77, 0.5);
-  border-top: 1px solid rgba(255, 216, 77, 0.8);
-  border-left: 1px solid rgba(255, 216, 77, 0.8);
-  color: var(--yellow);
-  font-size: 19px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+  font-size: 18px;
   font-weight: 800;
-  letter-spacing: 1.5px;
-  /* Đổ bóng ánh vàng */
+  letter-spacing: 1px;
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+  box-shadow: none;
+}
+
+.getkey.unlocked {
+  background: rgba(74, 222, 128, 0.15);
+  border: 1px solid rgba(74, 222, 128, 0.6);
+  color: var(--green);
+  cursor: pointer;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
               inset 0 1px 4px rgba(255, 255, 255, 0.4),
-              inset 0 0 15px rgba(255, 216, 77, 0.15);
-  cursor: pointer;
-  transition: all 0.3s ease;
+              0 0 20px rgba(74, 222, 128, 0.3);
 }
 
-.getkey:hover {
-  background: rgba(255, 216, 77, 0.2);
-  border-color: rgba(255, 216, 77, 0.9);
-  transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(255, 216, 77, 0.3),
-              inset 0 1px 6px rgba(255, 255, 255, 0.6),
-              0 0 25px rgba(255, 216, 77, 0.4);
+.getkey.unlocked:hover {
+  background: rgba(74, 222, 128, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(74, 222, 128, 0.4);
 }
-
-.getkey:active { transform: scale(.96); }
 
 #result {
   width: 100%;
@@ -156,70 +255,7 @@ h1 span { color: var(--yellow); }
   font-size: 13px;
   color: #4ade80;
   font-weight: 700;
-  text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
 }
-
-/* Khối các liên kết */
-.links {
-  width: 100%;
-  display: grid;
-  gap: 12px;
-  margin-top: 24px;
-}
-
-.link {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 14px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top: 1px solid rgba(255, 255, 255, 0.25);
-  color: white;
-  text-decoration: none;
-  text-align: left;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.link:hover {
-  background: rgba(22, 139, 255, 0.15);
-  border-color: rgba(255, 216, 77, 0.6);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(22, 139, 255, 0.35);
-}
-
-/* Khung chứa Icon app */
-.icon-box {
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-  flex-shrink: 0;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.icon-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.link strong {
-  display: block;
-  color: var(--yellow);
-  margin-bottom: 3px;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.link small { color: #cbd5e1; font-size: 12px; font-weight: 500; }
 
 footer {
   margin-top: 25px;
@@ -242,38 +278,53 @@ footer {
 
     <div class="line"></div>
 
-    <button class="getkey" id="getKeyBtn" onclick="startGetKey()">
-      🔑 GETKEY
-    </button>
+    <div class="instruction-title">Hoàn thành các bước để mở khóa</div>
 
-    <div id="result">Nhấn GETKEY để bắt đầu nhận key miễn phí.</div>
-    <div id="server-status">🟢 Hệ thống Getkey đã sẵn sàng hoạt động!</div>
-
-    <div class="links">
-      <a class="link" href="https://www.tiktok.com/@riskmmm.10?_r=1&_t=ZS-9AwHNWUarHM" target="_blank">
-        <span class="icon-box"><img src="https://i.ibb.co/wZsqkgh8/1793251345194.png" alt="TikTok"></span>
-        <span>
-          <strong>TIKTOK</strong>
-          <small>Theo dõi kênh TikTok</small>
-        </span>
+    <!-- CÁC NHIỆM VỤ BẮT BUỘC -->
+    <div class="tasks-container">
+      <a class="task-btn" id="task1" href="https://www.tiktok.com/@riskmmm.10?_r=1&_t=ZS-9AwHNWUarHM" target="_blank" onclick="completeTask(1)">
+        <div class="task-left">
+          <img class="task-icon" src="https://i.ibb.co/wZsqkgh8/1793251345194.png" alt="TikTok">
+          <span>Follow TikTok</span>
+        </div>
+        <span class="task-status" id="status1">Chưa làm</span>
       </a>
 
-      <a class="link" href="https://zalo.me/g/bttzjw2jwt7vxiyunpx6" target="_blank">
-        <span class="icon-box"><img src="https://i.ibb.co/4nMTcjFg/1793250914410.png" alt="Zalo"></span>
-        <span>
-          <strong>NHÓM ZALO</strong>
-          <small>Tham gia cộng đồng</small>
-        </span>
+      <a class="task-btn" id="task2" href="https://zalo.me/g/bttzjw2jwt7vxiyunpx6" target="_blank" onclick="completeTask(2)">
+        <div class="task-left">
+          <img class="task-icon" src="https://i.ibb.co/4nMTcjFg/1793250914410.png" alt="Zalo">
+          <span>Vào nhóm Zalo</span>
+        </div>
+        <span class="task-status" id="status2">Chưa làm</span>
       </a>
 
-      <a class="link" href="https://t.me/tuqnwz" target="_blank">
-        <span class="icon-box"><img src="https://i.ibb.co/hRq1sFQP/1793251373352.png" alt="Telegram"></span>
-        <span>
-          <strong>NHÓM TELEGRAM</strong>
-          <small>Cập nhật thông tin key</small>
-        </span>
+      <a class="task-btn" id="task3" href="https://t.me/tuqnwz" target="_blank" onclick="completeTask(3)">
+        <div class="task-left">
+          <img class="task-icon" src="https://i.ibb.co/hRq1sFQP/1793251373352.png" alt="Telegram">
+          <span>Vào nhóm Telegram</span>
+        </div>
+        <span class="task-status" id="status3">Chưa làm</span>
       </a>
     </div>
+
+    <!-- THANH TIẾN ĐỘ -->
+    <div class="progress-box">
+      <div class="progress-info">
+        <span>Tiến độ mở khóa</span>
+        <span id="progressText">0/3</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+    </div>
+
+    <!-- NÚT GETKEY -->
+    <button class="getkey" id="getKeyBtn" onclick="startGetKey()">
+      🔒 Vui lòng hoàn thành nhiệm vụ
+    </button>
+
+    <div id="result">Hãy hoàn thành đủ 3 nhiệm vụ ở trên để mở khóa nút GETKEY.</div>
+    <div id="server-status">🟢 Hệ thống sẵn sàng</div>
   </div>
 
   <footer>© 2026 FREE KEY PHANTOM · QTuan</footer>
@@ -281,8 +332,45 @@ footer {
 
 <script>
 const BACKEND_URL = "https://tuanq.onrender.com";
+let completedTasks = { 1: false, 2: false, 3: false };
+
+function completeTask(id) {
+  if (!completedTasks[id]) {
+    completedTasks[id] = true;
+    
+    // Cập nhật giao diện nút nhiệm vụ
+    const taskEl = document.getElementById(`task${id}`);
+    const statusEl = document.getElementById(`status${id}`);
+    
+    taskEl.classList.add("completed");
+    statusEl.textContent = "Đã xong ✓";
+
+    updateProgress();
+  }
+}
+
+function updateProgress() {
+  const count = Object.values(completedTasks).filter(Boolean).length;
+  const percent = (count / 3) * 100;
+  
+  document.getElementById("progressText").textContent = `${count}/3`;
+  document.getElementById("progressBar").style.width = `${percent}%`;
+
+  if (count === 3) {
+    const btn = document.getElementById("getKeyBtn");
+    btn.classList.add("unlocked");
+    btn.textContent = "🔑 MỞ KHÓA GETKEY NGAY";
+    document.getElementById("result").textContent = "🎉 Bạn đã hoàn thành tất cả nhiệm vụ! Bấm nút để lấy key.";
+  }
+}
 
 async function startGetKey() {
+  const count = Object.values(completedTasks).filter(Boolean).length;
+  if (count < 3) {
+    alert("Vui lòng hoàn thành đủ 3 nhiệm vụ trước khi lấy key!");
+    return;
+  }
+
   const resultBox = document.getElementById("result");
   const btn = document.getElementById("getKeyBtn");
   
@@ -297,7 +385,7 @@ async function startGetKey() {
     if (data.success && data.redirectUrl) {
       window.location.href = data.redirectUrl;
     } else {
-      alert("Lỗi khởi tạo phiên!");
+      alert(data.message || "Lỗi khởi tạo phiên!");
       btn.style.opacity = "1";
       btn.style.pointerEvents = "auto";
     }
