@@ -1,27 +1,168 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Nạp Key Phantom</title>
-    <style>
-        body { font-family: sans-serif; background: #0f172a; color: #fff; padding: 30px 20px; }
-        .card { background: #1e293b; max-width: 400px; margin: 0 auto; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        input, textarea { width: 100%; padding: 10px; margin-top: 10px; margin-bottom: 15px; background: #0f172a; border: 1px solid #334155; color: #fff; border-radius: 6px; box-sizing: border-box; }
-        textarea { height: 120px; resize: vertical; }
-        .btn { background: #3b82f6; color: white; border: none; padding: 12px; width: 100%; font-size: 16px; border-radius: 6px; cursor: pointer; font-weight: bold; }
-        .btn:active { background: #2563eb; }
-        .msg { margin-top: 15px; font-weight: bold; text-align: center; font-size: 14px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Nạp Key Phantom</title>
+
+<!-- Google Fonts hiện đại -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+:root {
+  --blue: #168bff;
+  --yellow: #ffd84d;
+  --green: #4ade80;
+  --white: #fff;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #0f172a;
+  color: white;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* Background ánh sáng rực rỡ đồng bộ */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(22, 139, 255, 0.45), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(255, 216, 77, 0.3), transparent 45%),
+    linear-gradient(rgba(10, 25, 50, 0.4), rgba(5, 15, 30, 0.7)),
+    url("https://i.ibb.co/qYn7C0Mn/8945ecd69bcdf96bbf90093ae108d1ad.jpg") center/cover no-repeat;
+}
+
+/* Hiệu ứng Kính lỏng (Liquid Glass) */
+.card {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 28px;
+  padding: 32px 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4),
+              inset 0 0 25px rgba(255, 255, 255, 0.08);
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--yellow);
+  text-shadow: 0 0 15px rgba(255, 216, 77, 0.4);
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 6px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: rgba(255, 216, 77, 0.6);
+  background: rgba(15, 23, 42, 0.8);
+  box-shadow: 0 0 15px rgba(255, 216, 77, 0.2);
+}
+
+textarea {
+  height: 130px;
+  resize: vertical;
+}
+
+/* Nút bấm viền vàng Liquid Glass */
+.btn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 16px;
+  background: rgba(255, 216, 77, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 216, 77, 0.5);
+  border-top: 1px solid rgba(255, 216, 77, 0.8);
+  border-left: 1px solid rgba(255, 216, 77, 0.8);
+  color: var(--yellow);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+              inset 0 1px 4px rgba(255, 255, 255, 0.4),
+              inset 0 0 15px rgba(255, 216, 77, 0.15);
+}
+
+.btn:hover {
+  background: rgba(255, 216, 77, 0.25);
+  border-color: rgba(255, 216, 77, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(255, 216, 77, 0.3),
+              inset 0 1px 6px rgba(255, 255, 255, 0.6),
+              0 0 20px rgba(255, 216, 77, 0.4);
+}
+
+.btn:active { transform: scale(0.97); }
+
+.msg {
+  margin-top: 16px;
+  font-weight: 700;
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #94a3b8;
+  font-size: 12px;
+}
+</style>
 </head>
 <body>
 
-<div class="card">
-    <h2>🛠️ Quản Trị Nạp Key</h2>
-    <label>Mật khẩu Admin:</label>
-    <input type="password" id="passInput" placeholder="Nhập mật khẩu admin...">
+<div class="bg"></div>
 
-    <label>Danh sách Key (Mỗi key một dòng):</label>
+<div class="card">
+    <h2>🛠️ QUẢN TRỊ NẠP KEY</h2>
+    
+    <label>🔑 Mật khẩu Admin:</label>
+    <input type="password" id="passInput" placeholder="Nhập mật khẩu quản trị...">
+
+    <label>📜 Danh sách Key (Mỗi key một dòng):</label>
     <textarea id="keysInput" placeholder="KEY_ABC_1&#10;KEY_ABC_2&#10;KEY_ABC_3"></textarea>
 
     <button class="btn" onclick="addKeys()">➕ NẠP KEY VÀO KHO</button>
@@ -48,7 +189,8 @@
             return;
         }
 
-        msgBox.style.color = "#facc15";
+        msgBox.style.color = "#ffd84d";
+        msgBox.style.background = "rgba(255, 216, 77, 0.1)";
         msgBox.innerText = "⏳ Đang gửi dữ liệu lên server...";
 
         try {
@@ -70,15 +212,18 @@
             }
 
             if (res.ok && data.success) {
-                msgBox.style.color = "#10b981";
+                msgBox.style.color = "#4ade80";
+                msgBox.style.background = "rgba(74, 222, 128, 0.1)";
                 msgBox.innerText = data.message;
                 document.getElementById('keysInput').value = ""; 
             } else {
-                msgBox.style.color = "#ef4444";
+                msgBox.style.color = "#f87171";
+                msgBox.style.background = "rgba(248, 113, 113, 0.1)";
                 msgBox.innerText = "Lỗi: " + (data.message || "Sai mật khẩu hoặc lỗi server");
             }
         } catch (e) {
-            msgBox.style.color = "#ef4444";
+            msgBox.style.color = "#f87171";
+            msgBox.style.background = "rgba(248, 113, 113, 0.1)";
             msgBox.innerText = "Lỗi kết nối tới máy chủ! (Kiểm tra lại Render)";
             console.error(e);
         }
