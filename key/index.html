@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết Quả Lấy Key - QTuan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; min-height: 100vh; background: #0f172a; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .bg { position: fixed; inset: 0; z-index: -1; background: radial-gradient(circle at 20% 20%, rgba(22, 139, 255, 0.45), transparent 45%), radial-gradient(circle at 80% 80%, rgba(255, 216, 77, 0.3), transparent 45%), linear-gradient(rgba(10, 25, 50, 0.4), rgba(5, 15, 30, 0.7)), url("https://i.ibb.co/qYn7C0Mn/8945ecd69bcdf96bbf90093ae108d1ad.jpg") center/cover no-repeat; }
+        .card { width: 100%; max-width: 420px; background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 28px; padding: 32px 22px; box-shadow: 0 20px 50px rgba(0,0,0,0.4); text-align: center; }
+        .avatar { width: 95px; height: 95px; object-fit: cover; border-radius: 50%; border: 3px solid #ffd84d; margin-bottom: 15px; }
+        h2 { margin: 0 0 10px; font-size: 22px; font-weight: 800; }
+        .success-title { color: #ffd84d; }
+        .error-title { color: #f87171; }
+        p { color: #cbd5e1; font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
+        .key-box { background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(22, 139, 255, 0.4); padding: 14px; margin-top: 15px; border-radius: 12px; font-size: 17px; word-break: break-all; color: #60a5fa; font-weight: 700; }
+        .btn { width: 100%; background: linear-gradient(135deg, #059669, #10b981); color: white; border: none; padding: 15px; font-size: 16px; border-radius: 16px; cursor: pointer; font-weight: 800; margin-top: 15px; }
+        .btn-home { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); margin-top: 10px; color: white; text-decoration: none; display: block; text-align: center; padding: 15px; border-radius: 16px; font-weight: 800; }
+        .loading { font-size: 16px; color: #60a5fa; font-weight: 700; }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="card">
+        <img class="avatar" src="https://i.ibb.co/h1nNpyr6/a1ecd5a5bc6bbf9b713d399871c91cac.jpg" alt="QTuan avatar">
+        
+        <div id="loadingArea" class="loading">
+            ⏳ Đang xác thực phiên làm việc và kiểm tra kho key...
+        </div>
+
+        <div id="resultArea" style="display: none;">
+            <h2 id="statusTitle"></h2>
+            <p id="statusMsg"></p>
+            
+            <div id="successContent" style="display: none;">
+                <div class="key-box" id="keyText">---</div>
+                <button class="btn" onclick="copyKey()">📋 Sao chép Key</button>
+            </div>
+
+            <div id="errorContent" style="display: none;">
+                <a class="btn-home" href="https://toiyeumeban.site">🏠 Quay lại trang chủ</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const BACKEND_URL = "https://tuanq.onrender.com";
+        const urlParams = new URLSearchParams(window.location.search);
+        const sid = urlParams.get('sid');
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            if (!sid) {
+                showResult(false, "Thiếu mã phiên làm việc! Vui lòng thực hiện từ trang chủ.");
+                return;
+            }
+
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/auto-claim?sid=${sid}`);
+                const data = await res.json();
+
+                if (data.success) {
+                    showResult(true, "Vượt link thành công! Key của bạn ở bên dưới:", data.key);
+                } else {
+                    showResult(false, data.message);
+                }
+            } catch (e) {
+                showResult(false, "Lỗi kết nối đến máy chủ! Vui lòng thử lại sau.");
+            }
+        });
+
+        function showResult(isSuccess, message, key = "") {
+            document.getElementById('loadingArea').style.display = 'none';
+            document.getElementById('resultArea').style.display = 'block';
+
+            const titleElem = document.getElementById('statusTitle');
+            const msgElem = document.getElementById('statusMsg');
+
+            if (isSuccess) {
+                titleElem.innerText = "🎉 NHẬN KEY THÀNH CÔNG";
+                titleElem.className = "success-title";
+                msgElem.innerText = message;
+                document.getElementById('keyText').innerText = key;
+                document.getElementById('successContent').style.display = 'block';
+            } else {
+                titleElem.innerText = "❌ THÔNG BÁO";
+                titleElem.className = "error-title";
+                msgElem.innerText = message;
+                document.getElementById('errorContent').style.display = 'block';
+            }
+        }
+
+        function copyKey() {
+            const key = document.getElementById('keyText').innerText;
+            navigator.clipboard.writeText(key);
+            alert("Đã sao chép Key thành công!");
+        }
+    </script>
+</body>
+  </html>
+  
