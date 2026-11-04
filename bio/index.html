@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QTuan - Bio Link</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .link-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .link-card:hover { transform: translateY(-3px) scale(1.01); }
+        .glass-panel { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.15); }
+    </style>
+</head>
+<body id="app-body" class="font-sans min-h-screen transition-colors duration-500 relative pb-20 bg-gradient-to-br from-gray-950 via-purple-950 to-slate-950 text-white">
+
+    <!-- Background Image Layer -->
+    <div id="bg-image-layer" class="fixed inset-0 pointer-events-none bg-cover bg-center transition-all duration-500 z-0" style="background-image: url(&quot;https://i.ibb.co/rRMZMk9h/file-0000000029f48211938a2a560fb9149c.png&quot;); filter: blur(0px);"></div>
+    <div id="bg-overlay-layer" class="fixed inset-0 pointer-events-none transition-all duration-500 z-0" style="background-color: rgba(0, 0, 0, 0.15);"></div>
+
+    <!-- Top Action Bar for Editor Toggle -->
+    
+
+    <!-- Main Bio Container (Mobile Phone Simulation layout) -->
+    <main class="max-w-md mx-auto px-4 pt-6 pb-6 flex flex-col items-center justify-between min-h-[calc(100vh-60px)] relative z-10">
+
+        <!-- Top & Middle Content Wrapper -->
+        <div class="w-full flex flex-col items-center">
+            <!-- Avatar & Verified Badge -->
+            <div class="relative group mb-4">
+                <div id="avatar-container" class="relative">
+                    <img id="view-avatar" src="https://i.ibb.co/SwD5fZTx/67889f15a0ce8216e896081202535917.jpg" alt="Avatar" class="w-28 h-28 rounded-full object-cover border-4 border-pink-500 shadow-neon">
+                    <div id="verified-badge" class="absolute bottom-1 right-1 bg-blue-500 text-white text-xs p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-lg">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Name & Bio -->
+            <div class="text-center mb-6 w-full px-2">
+                <h1 id="view-name" class="text-2xl font-bold font-outfit tracking-wide mb-1">QTuan</h1>
+                <p id="view-bio" class="text-sm opacity-80 leading-relaxed max-w-xs mx-auto">Nhìn cái gì?</p>
+            </div>
+
+            <!-- Social Icons Row -->
+            <div id="social-links-container" class="flex flex-wrap justify-center gap-3 mb-8 max-w-xs hidden"></div>
+
+            <!-- Links List -->
+            <div id="links-container" class="w-full space-y-4"><div class="w-full">
+                        <a href="https://toiyeumeban.site/" target="_blank" class="bg-white/10 backdrop-blur-md text-white rounded-2xl border border-white/10 hover:bg-white/15 p-4 flex items-center justify-between link-card group">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-ghost text-base"></i>
+                                <span class="font-semibold text-sm">Web Get Key Phantom Free</span>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-50 group-hover:opacity-100 transition"></i>
+                        </a>
+                    </div><div class="w-full">
+                        <a href="https://link4m.net/oEpxCyw" target="_blank" class="bg-white/10 backdrop-blur-md text-white rounded-2xl border border-white/10 hover:bg-white/15 p-4 flex items-center justify-between link-card group">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-gun text-base"></i>
+                                <span class="font-semibold text-sm">Định Vị 49K Của IZC</span>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-50 group-hover:opacity-100 transition"></i>
+                        </a>
+                    </div><div class="w-full">
+                        <a href="https://zalo.me/g/bttzjw2jwt7vxiyunpx6" target="_blank" class="bg-white/10 backdrop-blur-md text-white rounded-2xl border border-white/10 hover:bg-white/15 p-4 flex items-center justify-between link-card group">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-comment-dots text-base"></i>
+                                <span class="font-semibold text-sm">Nhóm Zalo</span>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-50 group-hover:opacity-100 transition"></i>
+                        </a>
+                    </div><div class="w-full">
+                        <a href="https://t.me/tuqnwz" target="_blank" class="bg-white/10 backdrop-blur-md text-white rounded-2xl border border-white/10 hover:bg-white/15 p-4 flex items-center justify-between link-card group">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-telegram text-base"></i>
+                                <span class="font-semibold text-sm">Nhóm Tele</span>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-50 group-hover:opacity-100 transition"></i>
+                        </a>
+                    </div></div>
+        </div>
+
+        <!-- Footer pushed to absolute bottom -->
+        <footer class="mt-16 text-center text-xs opacity-60 pb-4">
+            <p>By QTuan</p>
+        </footer>
+
+    </main>
+
+    <!-- EDIT MODE PANEL -->
+    
+
+            <!-- Custom Background Options -->
+            <div class="space-y-3 bg-gray-800/50 p-4 rounded-2xl border border-white/5">
+                <h3 class="text-sm font-semibold text-gray-300 flex items-center justify-between">
+                    <span>Tùy Chỉnh Background</span>
+                    <span class="text-[10px] text-gray-400 font-normal">Ghi đè theme hiện tại</span>
+                </h3>
+
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="setBgType('theme')" class="p-2 text-xs rounded-lg border border-gray-700 bg-gray-900 hover:border-indigo-500">Mặc định Theme</button>
+                    <button onclick="setBgType('color')" class="p-2 text-xs rounded-lg border border-gray-700 bg-gray-900 hover:border-indigo-500">Màu Đơn (Solid)</button>
+                    <button onclick="setBgType('image')" class="p-2 text-xs rounded-lg border border-gray-700 bg-gray-900 hover:border-indigo-500">Hình Ảnh URL</button>
+                </div>
+
+                <div id="bg-color-settings" class="hidden space-y-2 pt-2">
+                    <label class="text-xs text-gray-400">Chọn Màu Nền (Color Picker)</label>
+                    <div class="flex items-center gap-3">
+                        <input type="color" id="bg-color-picker" oninput="updateCustomBg()" class="w-10 h-10 rounded-lg cursor-pointer bg-transparent border border-gray-700">
+                        <input type="text" id="bg-color-hex" oninput="updateCustomBgHex()" placeholder="#1e293b" class="flex-1 bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-indigo-500">
+                    </div>
+                </div>
+
+                <div id="bg-image-settings" class="space-y-3 pt-2">
+                    <div>
+                        <label class="text-xs text-gray-400">URL Hình Ảnh Nền</label>
+                        <input type="text" id="bg-image-url" oninput="updateCustomBg()" placeholder="https://images.unsplash.com/..." class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 mt-1">
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="text-xs text-gray-400">Độ Nhòe (Blur): <span id="blur-val">0</span>px</label>
+                            <input type="range" id="bg-blur" min="0" max="20" value="0" oninput="updateCustomBg()" class="w-full accent-indigo-500 mt-1">
+                        </div>
+                        <div>
+                            <label class="text-xs text-gray-400">Lớp Phủ Nền (Overlay): <span id="overlay-val">15</span>%</label>
+                            <input type="range" id="bg-overlay" min="0" max="90" value="40" oninput="updateCustomBg()" class="w-full accent-indigo-500 mt-1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Info Form -->
+            <div class="space-y-3 bg-gray-800/50 p-4 rounded-2xl border border-white/5">
+                <h3 class="text-sm font-semibold text-gray-300">Thông Tin Cá Nhân</h3>
+                <div>
+                    <label class="text-xs text-gray-400">Họ và Tên</label>
+                    <input type="text" id="input-name" oninput="updateProfile()" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 mt-1">
+                </div>
+                <div>
+                    <label class="text-xs text-gray-400">Dòng Giới Thiệu Short Bio</label>
+                    <textarea id="input-bio" oninput="updateProfile()" rows="2" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 mt-1"></textarea>
+                </div>
+                <div>
+                    <label class="text-xs text-gray-400">Link Ảnh Đại Diện (Avatar URL)</label>
+                    <input type="text" id="input-avatar" oninput="updateProfile()" placeholder="https://..." class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 mt-1">
+                </div>
+            </div>
+
+            <!-- Social Media Handles & Show/Hide Toggle -->
+            <div class="bg-gray-800/50 p-4 rounded-2xl border border-white/5 space-y-3">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-sm font-semibold text-gray-300">Mạng Xã Hội (Social Icons)</h3>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="toggle-show-socials" onchange="toggleSocialVisibility()" class="sr-only peer">
+                        <div class="w-9 h-5 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-600"></div>
+                        <span class="ml-2 text-xs font-medium text-gray-300">Hiển thị</span>
+                    </label>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div>
+                        <label class="text-gray-400">Facebook URL</label>
+                        <input type="text" id="social-facebook" oninput="updateSocials()" placeholder="https://facebook.com/..." class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-xs focus:outline-none focus:border-indigo-500 mt-1">
+                    </div>
+                    <div>
+                        <label class="text-gray-400">Instagram URL</label>
+                        <input type="text" id="social-instagram" oninput="updateSocials()" placeholder="https://instagram.com/..." class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-xs focus:outline-none focus:border-indigo-500 mt-1">
+                    </div>
+                    <div>
+                        <label class="text-gray-400">TikTok URL</label>
+                        <input type="text" id="social-tiktok" oninput="updateSocials()" placeholder="https://tiktok.com/@..." class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-xs focus:outline-none focus:border-indigo-500 mt-1">
+                    </div>
+                    <div>
+                        <label class="text-gray-400">YouTube URL</label>
+                        <input type="text" id="social-youtube" oninput="updateSocials()" placeholder="https://youtube.com/..." class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-xs focus:outline-none focus:border-indigo-500 mt-1">
+                    </div>
+                    <div>
+                        <label class="text-gray-400">Zalo / SĐT</label>
+                        <input type="text" id="social-zalo" oninput="updateSocials()" placeholder="https://zalo.me/..." class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-xs focus:outline-none focus:border-indigo-500 mt-1">
+                    </div>
+                    <div>
+                        <label class="text-gray-400">Email Contact</label>
+                        <input type="text" id="social-email" oninput="updateSocials()" placeholder="mailto:you@gmail.com" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-xs focus:outline-none focus:border-indigo-500 mt-1">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Links & Widgets Editor -->
+            <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-sm font-semibold text-gray-300">Danh Sách Nút &amp; Widget</h3>
+                    <button onclick="addNewLinkModal()" class="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-lg flex items-center gap-1">
+                        <i class="fa-solid fa-plus"></i> Thêm Thẻ Mới
+                    </button>
+                </div>
+                
+                <div id="editor-links-list" class="space-y-2"><div class="flex items-center justify-between p-3 bg-gray-800 rounded-xl border border-gray-700 text-xs">
+                    <div class="flex items-center gap-2 truncate">
+                        <span class="w-5 h-5 rounded-full bg-gray-700 flex items-center justify-center text-[10px] text-gray-400 font-bold">1</span>
+                        <span class="font-medium text-gray-200 truncate">Web Get Key Phantom Free</span>
+                        <span class="px-1.5 py-0.5 rounded bg-gray-700 text-[10px] text-indigo-300 uppercase">link</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <button onclick="editLinkModal(1)" class="p-1.5 text-gray-400 hover:text-indigo-400">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                        <button onclick="deleteLink(1)" class="p-1.5 text-gray-400 hover:text-rose-400">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </div><div class="flex items-center justify-between p-3 bg-gray-800 rounded-xl border border-gray-700 text-xs">
+                    <div class="flex items-center gap-2 truncate">
+                        <span class="w-5 h-5 rounded-full bg-gray-700 flex items-center justify-center text-[10px] text-gray-400 font-bold">2</span>
+                        <span class="font-medium text-gray-200 truncate">Định Vị 49K Của IZC</span>
+                        <span class="px-1.5 py-0.5 rounded bg-gray-700 text-[10px] text-indigo-300 uppercase">link</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <button onclick="editLinkModal(1793774136645)" class="p-1.5 text-gray-400 hover:text-indigo-400">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                        <button onclick="deleteLink(1793774136645)" class="p-1.5 text-gray-400 hover:text-rose-400">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </div><div class="flex items-center justify-between p-3 bg-gray-800 rounded-xl border border-gray-700 text-xs">
+                    <div class="flex items-center gap-2 truncate">
+                        <span class="w-5 h-5 rounded-full bg-gray-700 flex items-center justify-center text-[10px] text-gray-400 font-bold">3</span>
+                        <span class="font-medium text-gray-200 truncate">Nhóm Zalo</span>
+                        <span class="px-1.5 py-0.5 rounded bg-gray-700 text-[10px] text-indigo-300 uppercase">link</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <button onclick="editLinkModal(1793774180248)" class="p-1.5 text-gray-400 hover:text-indigo-400">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                        <button onclick="deleteLink(1793774180248)" class="p-1.5 text-gray-400 hover:text-rose-400">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </div><div class="flex items-center justify-between p-3 bg-gray-800 rounded-xl border border-gray-700 text-xs">
+                    <div class="flex items-center gap-2 truncate">
+                        <span class="w-5 h-5 rounded-full bg-gray-700 flex items-center justify-center text-[10px] text-gray-400 font-bold">4</span>
+                        <span class="font-medium text-gray-200 truncate">Nhóm Tele</span>
+                        <span class="px-1.5 py-0.5 rounded bg-gray-700 text-[10px] text-indigo-300 uppercase">link</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <button onclick="editLinkModal(1793774215160)" class="p-1.5 text-gray-400 hover:text-indigo-400">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                        <button onclick="deleteLink(1793774215160)" class="p-1.5 text-gray-400 hover:text-rose-400">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </div></div>
+            </div>
+
+            <!-- Actions Reset -->
+            <div class="pt-4 border-t border-white/10 flex justify-between">
+                <button onclick="resetToDefault()" class="text-xs text-rose-400 hover:text-rose-300 flex items-center gap-1">
+                    <i class="fa-solid fa-rotate-left"></i> Khôi phục mặc định
+                </button>
+                <button onclick="saveData()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs rounded-xl shadow-lg flex items-center gap-1.5">
+                    <i class="fa-solid fa-floppy-disk"></i> Lưu Thay Đổi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Form Thêm / Sửa Link -->
+    
+    </div>
+
+    <!-- EXPORT CODE & EASY COPY MODAL (SỬA GIỚI HẠN 275 DÒNG & BÀN PHÍM) -->
+    
+
+                <!-- Khung hiển thị Mã HTML toàn bộ -->
+                <textarea id="export-code-area" readonly="" class="w-full h-36 bg-black/90 border border-gray-800 font-mono text-[11px] p-3 rounded-xl text-emerald-400 focus:outline-none focus:border-emerald-500"></textarea>
+
+                <!-- Chia nhỏ thành 3 phần nếu bàn phím bị giới hạn 275 dòng -->
+                <div class="pt-2 border-t border-gray-800 space-y-2">
+                    <p class="text-[11px] text-amber-400 font-semibold">
+                        ⚠️ Nếu bàn phím bị giới hạn 275 dòng: Hãy copy lần lượt 3 Phần dưới đây rồi dán nối tiếp nhau vào file!
+                    </p>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button onclick="copyChunk(1)" class="p-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-xs text-indigo-300 font-medium text-center">
+                            <i class="fa-solid fa-scissors mr-1"></i> Copy Phần 1
+                        </button>
+                        <button onclick="copyChunk(2)" class="p-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-xs text-indigo-300 font-medium text-center">
+                            <i class="fa-solid fa-scissors mr-1"></i> Copy Phần 2
+                        </button>
+                        <button onclick="copyChunk(3)" class="p-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-xs text-indigo-300 font-medium text-center">
+                            <i class="fa-solid fa-scissors mr-1"></i> Copy Phần 3
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center pt-2 border-t border-gray-800">
+                <button onclick="downloadJsonData()" class="px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs rounded-lg flex items-center gap-1">
+                    <i class="fa-solid fa-file-export"></i> Tải Data JSON
+                </button>
+                <button onclick="closeExportModal()" class="px-4 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs rounded-lg">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 bg-emerald-600 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-2xl transform transition-all duration-300 flex items-center gap-2 translate-y-20 opacity-0">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-message">Đã lưu nút!</span>
+    </div>
+
+    <!-- Application JavaScript Logic -->
+    <script>
+        // Initial Default Profile Data
+        const defaultData = {
+            theme: 'neon',
+            bgType: 'theme', 
+            bgColor: '#0f172a',
+            bgImage: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&auto=format&fit=crop&q=80',
+            bgBlur: 0,
+            bgOverlay: 40,
+            showSocials: true,
+            name: 'QTuan',
+            bio: 'Nhìn cái gì?',
+            avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
+            socials: {
+                facebook: 'https://facebook.com',
+                instagram: 'https://instagram.com',
+                tiktok: 'https://tiktok.com',
+                youtube: '',
+                zalo: '',
+                email: ''
+            },
+            links: [
+                {
+                    id: 1,
+                    type: 'link',
+                    label: 'Web Get Key Phantom Free',
+                    url: 'https://example.com',
+                    icon: 'fa-solid fa-globe',
+                    subtext: ''
+                }
+            ]
+        };
+
+        // Application State
+        let bioData = JSON.parse(localStorage.getItem('user_bio_data_qtuan')) || defaultData;
+        let isEditMode = false;
+        let editingLinkId = null;
+        let currentFullHtml = '';
+
+        // Initialize App on DOM Ready
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProfile();
+        });
+
+        // Toggle Admin Edit Panel
+        function toggleEditMode() {
+            isEditMode = !isEditMode;
+            const panel = document.getElementById('edit-panel');
+            const btnText = document.getElementById('edit-btn-text');
+
+            if (isEditMode) {
+                panel.classList.remove('translate-y-full');
+                btnText.textContent = 'Đóng Chỉnh Sửa';
+                populateEditorFields();
+            } else {
+                panel.classList.add('translate-y-full');
+                btnText.textContent = 'Chỉnh Sửa';
+            }
+        }
+
+        // Render Profile UI
+        function renderProfile() {
+            applyTheme(bioData.theme);
+            renderCustomBg();
+
+            document.getElementById('view-name').textContent = bioData.name || 'QTuan';
+            document.getElementById('view-bio').textContent = bioData.bio || '';
+            document.getElementById('view-avatar').src = bioData.avatar || 'https://via.placeholder.com/150';
+
+            renderSocials();
+            renderLinks();
+        }
+
+        // Custom Background Handler
+        function renderCustomBg() {
+            const body = document.getElementById('app-body');
+            const bgImageLayer = document.getElementById('bg-image-layer');
+            const bgOverlayLayer = document.getElementById('bg-overlay-layer');
+
+            const bgType = bioData.bgType || 'theme';
+
+            if (bgType === 'color') {
+                bgImageLayer.classList.add('hidden');
+                bgOverlayLayer.classList.add('hidden');
+                body.style.backgroundColor = bioData.bgColor || '#0f172a';
+                body.style.backgroundImage = 'none';
+            } else if (bgType === 'image') {
+                body.style.backgroundColor = '';
+                bgImageLayer.classList.remove('hidden');
+                bgOverlayLayer.classList.remove('hidden');
+
+                bgImageLayer.style.backgroundImage = `url('${bioData.bgImage || ''}')`;
+                bgImageLayer.style.filter = `blur(${bioData.bgBlur || 0}px)`;
+
+                const overlayOpacity = (bioData.bgOverlay !== undefined ? bioData.bgOverlay : 40) / 100;
+                bgOverlayLayer.style.backgroundColor = `rgba(0, 0, 0, ${overlayOpacity})`;
+            } else {
+                bgImageLayer.classList.add('hidden');
+                bgOverlayLayer.classList.add('hidden');
+                body.style.backgroundColor = '';
+                body.style.backgroundImage = '';
+            }
+        }
+
+        // Apply Theme Styles
+        function applyTheme(themeName) {
+            const body = document.getElementById('app-body');
+            const avatar = document.getElementById('view-avatar');
+
+            body.className = 'font-sans min-h-screen transition-colors duration-500 relative pb-20 ';
+
+            switch (themeName) {
+                case 'light':
+                    body.classList.add('bg-slate-50', 'text-slate-900');
+                    avatar.className = "w-28 h-28 rounded-full object-cover border-4 border-slate-300 shadow-lg";
+                    break;
+                case 'neon':
+                    body.classList.add('bg-gradient-to-br', 'from-gray-950', 'via-purple-950', 'to-slate-950', 'text-white');
+                    avatar.className = "w-28 h-28 rounded-full object-cover border-4 border-pink-500 shadow-neon";
+                    break;
+                case 'pastel':
+                    body.classList.add('bg-gradient-to-tr', 'from-rose-100', 'via-purple-100', 'to-sky-100', 'text-slate-800');
+                    avatar.className = "w-28 h-28 rounded-full object-cover border-4 border-white shadow-md";
+                    break;
+                case 'cyberpunk':
+                    body.classList.add('bg-black', 'text-yellow-400');
+                    avatar.className = "w-28 h-28 rounded-full object-cover border-4 border-yellow-400 shadow-cyber";
+                    break;
+                case 'glass':
+                    body.classList.add('bg-gradient-to-br', 'from-slate-900', 'via-indigo-950', 'to-blue-900', 'text-white');
+                    avatar.className = "w-28 h-28 rounded-full object-cover border-4 border-white/30 shadow-glass backdrop-blur-md";
+                    break;
+                case 'dark':
+                default:
+                    body.classList.add('bg-gray-900', 'text-white');
+                    avatar.className = "w-28 h-28 rounded-full object-cover border-4 border-white/20 shadow-xl";
+                    break;
+            }
+        }
+
+        // Render Social Media Icons
+        function renderSocials() {
+            const container = document.getElementById('social-links-container');
+            container.innerHTML = '';
+
+            if (bioData.showSocials === false) {
+                container.classList.add('hidden');
+                return;
+            } else {
+                container.classList.remove('hidden');
+            }
+
+            const iconMap = {
+                facebook: 'fa-brands fa-facebook-f',
+                instagram: 'fa-brands fa-instagram',
+                tiktok: 'fa-brands fa-tiktok',
+                youtube: 'fa-brands fa-youtube',
+                zalo: 'fa-solid fa-comment-dots',
+                email: 'fa-solid fa-envelope'
+            };
+
+            Object.keys(bioData.socials || {}).forEach(key => {
+                const url = bioData.socials[key];
+                if (url && url.trim() !== '') {
+                    const iconBtn = document.createElement('a');
+                    iconBtn.href = url;
+                    iconBtn.target = '_blank';
+                    iconBtn.className = getSocialButtonStyle();
+                    iconBtn.innerHTML = `<i class="${iconMap[key] || 'fa-solid fa-link'} text-base"></i>`;
+                    container.appendChild(iconBtn);
+                }
+            });
+        }
+
+        function toggleSocialVisibility() {
+            bioData.showSocials = document.getElementById('toggle-show-socials').checked;
+            renderSocials();
+        }
+
+        // Populate Form Fields in Editor
+        function populateEditorFields() {
+            document.getElementById('input-name').value = bioData.name || '';
+            document.getElementById('input-bio').value = bioData.bio || '';
+            document.getElementById('input-avatar').value = bioData.avatar || '';
+
+            document.getElementById('toggle-show-socials').checked = bioData.showSocials !== false;
+
+            document.getElementById('social-facebook').value = bioData.socials.facebook || '';
+            document.getElementById('social-instagram').value = bioData.socials.instagram || '';
+            document.getElementById('social-tiktok').value = bioData.socials.tiktok || '';
+            document.getElementById('social-youtube').value = bioData.socials.youtube || '';
+            document.getElementById('social-zalo').value = bioData.socials.zalo || '';
+            document.getElementById('social-email').value = bioData.socials.email || '';
+
+            const bgType = bioData.bgType || 'theme';
+            setBgType(bgType, false);
+
+            document.getElementById('bg-color-picker').value = bioData.bgColor || '#0f172a';
+            document.getElementById('bg-color-hex').value = bioData.bgColor || '#0f172a';
+            document.getElementById('bg-image-url').value = bioData.bgImage || '';
+            document.getElementById('bg-blur').value = bioData.bgBlur || 0;
+            document.getElementById('bg-overlay').value = bioData.bgOverlay !== undefined ? bioData.bgOverlay : 40;
+            document.getElementById('blur-val').textContent = bioData.bgBlur || 0;
+            document.getElementById('overlay-val').textContent = bioData.bgOverlay !== undefined ? bioData.bgOverlay : 40;
+
+            renderEditorLinksList();
+        }
+
+        function setBgType(type, triggerRender = true) {
+            bioData.bgType = type;
+            const colorSettings = document.getElementById('bg-color-settings');
+            const imageSettings = document.getElementById('bg-image-settings');
+
+            colorSettings.classList.add('hidden');
+            imageSettings.classList.add('hidden');
+
+            if (type === 'color') colorSettings.classList.remove('hidden');
+            if (type === 'image') imageSettings.classList.remove('hidden');
+
+            if (triggerRender) renderProfile();
+        }
+
+        function updateCustomBg() {
+            bioData.bgColor = document.getElementById('bg-color-picker').value;
+            document.getElementById('bg-color-hex').value = bioData.bgColor;
+
+            bioData.bgImage = document.getElementById('bg-image-url').value;
+            bioData.bgBlur = document.getElementById('bg-blur').value;
+            bioData.bgOverlay = document.getElementById('bg-overlay').value;
+
+            document.getElementById('blur-val').textContent = bioData.bgBlur;
+            document.getElementById('overlay-val').textContent = bioData.bgOverlay;
+
+            renderProfile();
+        }
+
+        function updateCustomBgHex() {
+            const hex = document.getElementById('bg-color-hex').value;
+            if (/^#[0-9A-F]{6}$/i.test(hex)) {
+                document.getElementById('bg-color-picker').value = hex;
+                bioData.bgColor = hex;
+                renderProfile();
+            }
+        }
+
+        function updateProfile() {
+            bioData.name = document.getElementById('input-name').value;
+            bioData.bio = document.getElementById('input-bio').value;
+            bioData.avatar = document.getElementById('input-avatar').value;
+            renderProfile();
+        }
+
+        function updateSocials() {
+            bioData.socials = {
+                facebook: document.getElementById('social-facebook').value,
+                instagram: document.getElementById('social-instagram').value,
+                tiktok: document.getElementById('social-tiktok').value,
+                youtube: document.getElementById('social-youtube').value,
+                zalo: document.getElementById('social-zalo').value,
+                email: document.getElementById('social-email').value
+            };
+            renderProfile();
+        }
+
+        function setTheme(themeName) {
+            bioData.theme = themeName;
+            renderProfile();
+            showToast('Đã đổi theme: ' + themeName.toUpperCase());
+        }
+
+        // Modal Link Editor Management
+        function addNewLinkModal() {
+            editingLinkId = null;
+            document.getElementById('modal-title').textContent = 'Thêm Nút Liên Kết Mới';
+            document.getElementById('modal-type').value = 'link';
+            document.getElementById('modal-label').value = '';
+            document.getElementById('modal-url').value = '';
+            document.getElementById('modal-icon').value = '';
+            document.getElementById('modal-subtext').value = '';
+            document.getElementById('modal-image').value = '';
+
+            toggleModalFields();
+            document.getElementById('link-modal').classList.remove('hidden');
+            document.getElementById('link-modal').classList.add('flex');
+        }
+
+        function editLinkModal(id) {
+            editingLinkId = id;
+            const item = bioData.links.find(l => l.id === id);
+            if (!item) return;
+
+            document.getElementById('modal-title').textContent = 'Chỉnh Sửa Nút Liên Kết';
+            document.getElementById('modal-type').value = item.type || 'link';
+            document.getElementById('modal-label').value = item.label || '';
+            document.getElementById('modal-url').value = item.url || '';
+            document.getElementById('modal-icon').value = item.icon || '';
+            document.getElementById('modal-subtext').value = item.subtext || '';
+            document.getElementById('modal-image').value = item.image || '';
+
+            toggleModalFields();
+            document.getElementById('link-modal').classList.remove('hidden');
+            document.getElementById('link-modal').classList.add('flex');
+        }
+
+        function closeLinkModal() {
+            document.getElementById('link-modal').classList.add('hidden');
+            document.getElementById('link-modal').classList.remove('flex');
+        }
+
+        function toggleModalFields() {
+            const type = document.getElementById('modal-type').value;
+            const subtextField = document.getElementById('field-subtext');
+            const imageField = document.getElementById('field-image');
+            const urlField = document.getElementById('field-url');
+            const iconField = document.getElementById('field-icon');
+
+            if (type === 'youtube') {
+                subtextField.classList.add('hidden');
+                imageField.classList.add('hidden');
+                iconField.classList.add('hidden');
+                urlField.classList.remove('hidden');
+            } else if (type === 'qr') {
+                subtextField.classList.remove('hidden');
+                imageField.classList.remove('hidden');
+                iconField.classList.remove('hidden');
+                urlField.classList.add('hidden');
+            } else if (type === 'product') {
+                subtextField.classList.remove('hidden');
+                imageField.classList.remove('hidden');
+                iconField.classList.remove('hidden');
+                urlField.classList.remove('hidden');
+            } else {
+                subtextField.classList.remove('hidden');
+                imageField.classList.add('hidden');
+                iconField.classList.remove('hidden');
+                urlField.classList.remove('hidden');
+            }
+        }
+
+        function saveLinkItem() {
+            const type = document.getElementById('modal-type').value;
+            const label = document.getElementById('modal-label').value.trim();
+            const url = document.getElementById('modal-url').value.trim();
+            const icon = document.getElementById('modal-icon').value.trim();
+            const subtext = document.getElementById('modal-subtext').value.trim();
+            const image = document.getElementById('modal-image').value.trim();
+
+            if (!label) {
+                alert('Vui lòng nhập tiêu đề!');
+                return;
+            }
+
+            if (editingLinkId) {
+                const index = bioData.links.findIndex(l => l.id === editingLinkId);
+                if (index !== -1) {
+                    bioData.links[index] = { id: editingLinkId, type, label, url, icon, subtext, image };
+                }
+            } else {
+                const newItem = { id: Date.now(), type, label, url, icon, subtext, image };
+                bioData.links.push(newItem);
+            }
+
+            closeLinkModal();
+            renderProfile();
+            renderEditorLinksList();
+            showToast('Đã lưu nút!');
+        }
+
+        function deleteLink(id) {
+            bioData.links = bioData.links.filter(l => l.id !== id);
+            renderProfile();
+            renderEditorLinksList();
+            showToast('Đã xóa!');
+        }
+
+        // Render Links List
+        function renderLinks() {
+            const container = document.getElementById('links-container');
+            container.innerHTML = '';
+
+            (bioData.links || []).forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'w-full';
+
+                if (item.type === 'youtube') {
+                    card.innerHTML = `
+                        <div class="rounded-2xl overflow-hidden shadow-lg border border-white/10 bg-black/40">
+                            <div class="p-3 text-xs font-semibold opacity-80 flex items-center gap-2">
+                                <i class="fa-brands fa-youtube text-red-500"></i> ${escapeHtml(item.label)}
+                            </div>
+                            <div class="aspect-video w-full">
+                                <iframe class="w-full h-full" src="${escapeHtml(item.url)}" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    `;
+                } else if (item.type === 'qr') {
+                    card.innerHTML = `
+                        <div class="${getCardStyle()} p-4 text-center space-y-3">
+                            <div class="font-bold text-sm flex items-center justify-center gap-2">
+                                <i class="${escapeHtml(item.icon || 'fa-solid fa-qrcode')}"></i> ${escapeHtml(item.label)}
+                            </div>
+                            ${item.subtext ? `<p class="text-xs opacity-75">${escapeHtml(item.subtext)}</p>` : ''}
+                            ${item.image ? `<img src="${escapeHtml(item.image)}" alt="QR Code" class="w-44 h-44 mx-auto rounded-xl border border-white/20 p-1 bg-white">` : ''}
+                        </div>
+                    `;
+                } else if (item.type === 'product') {
+                    card.innerHTML = `
+                        <a href="${escapeHtml(item.url)}" target="_blank" class="${getCardStyle()} p-3 flex items-center gap-3 link-card group">
+                            ${item.image ? `<img src="${escapeHtml(item.image)}" class="w-16 h-16 rounded-xl object-cover shrink-0">` : ''}
+                            <div class="flex-1 min-w-0">
+                                <h4 class="font-bold text-sm truncate group-hover:text-indigo-400 transition">${escapeHtml(item.label)}</h4>
+                                ${item.subtext ? `<p class="text-xs opacity-75 truncate mt-0.5">${escapeHtml(item.subtext)}</p>` : ''}
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs opacity-50 group-hover:translate-x-1 transition"></i>
+                        </a>
+                    `;
+                } else {
+                    card.innerHTML = `
+                        <a href="${escapeHtml(item.url)}" target="_blank" class="${getCardStyle()} p-4 flex items-center justify-between link-card group">
+                            <div class="flex items-center gap-3">
+                                ${renderItemIcon(item.icon)}
+                                <span class="font-semibold text-sm">${escapeHtml(item.label)}</span>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-50 group-hover:opacity-100 transition"></i>
+                        </a>
+                    `;
+                }
+
+                container.appendChild(card);
+            });
+        }
+
+        function renderItemIcon(iconStr) {
+            if (!iconStr) return '<i class="fa-solid fa-link text-sm"></i>';
+            if (iconStr.startsWith('fa-')) {
+                return `<i class="${escapeHtml(iconStr)} text-base"></i>`;
+            }
+            return `<span class="text-base">${escapeHtml(iconStr)}</span>`;
+        }
+
+        function getCardStyle() {
+            const theme = bioData.theme;
+            if (theme === 'light') return 'bg-white text-slate-800 rounded-2xl shadow-md border border-slate-200 hover:border-slate-300';
+            if (theme === 'pastel') return 'bg-white/80 backdrop-blur-md text-purple-950 rounded-2xl shadow-sm border border-purple-200 hover:bg-white';
+            if (theme === 'cyberpunk') return 'bg-yellow-400 text-black font-bold rounded-none border-2 border-black shadow-cyber';
+            if (theme === 'glass') return 'glass-panel text-white rounded-2xl shadow-glass hover:bg-white/15';
+            return 'bg-white/10 backdrop-blur-md text-white rounded-2xl border border-white/10 hover:bg-white/15';
+        }
+
+        function getSocialButtonStyle() {
+            const theme = bioData.theme;
+            if (theme === 'light') return 'w-10 h-10 rounded-full bg-slate-200 text-slate-800 hover:bg-slate-300 flex items-center justify-center transition shadow';
+            if (theme === 'pastel') return 'w-10 h-10 rounded-full bg-white/80 text-purple-700 hover:bg-white flex items-center justify-center transition shadow-sm';
+            if (theme === 'cyberpunk') return 'w-10 h-10 rounded-md bg-yellow-400 text-black hover:bg-yellow-300 flex items-center justify-center font-bold border border-black';
+            if (theme === 'glass') return 'w-10 h-10 rounded-full glass-panel hover:bg-white/20 text-white flex items-center justify-center transition';
+            return 'w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition backdrop-blur-md border border-white/10';
+        }
+
+        function renderEditorLinksList() {
+            const container = document.getElementById('editor-links-list');
+            container.innerHTML = '';
+
+            bioData.links.forEach((item, index) => {
+                const el = document.createElement('div');
+                el.className = 'flex items-center justify-between p-3 bg-gray-800 rounded-xl border border-gray-700 text-xs';
+                el.innerHTML = `
+                    <div class="flex items-center gap-2 truncate">
+                        <span class="w-5 h-5 rounded-full bg-gray-700 flex items-center justify-center text-[10px] text-gray-400 font-bold">${index + 1}</span>
+                        <span class="font-medium text-gray-200 truncate">${escapeHtml(item.label)}</span>
+                        <span class="px-1.5 py-0.5 rounded bg-gray-700 text-[10px] text-indigo-300 uppercase">${item.type}</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <button onclick="editLinkModal(${item.id})" class="p-1.5 text-gray-400 hover:text-indigo-400">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                        <button onclick="deleteLink(${item.id})" class="p-1.5 text-gray-400 hover:text-rose-400">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(el);
+            });
+        }
+
+        function saveData() {
+            localStorage.setItem('user_bio_data_qtuan', JSON.stringify(bioData));
+            showToast('Đã lưu dữ liệu!');
+        }
+
+        function resetToDefault() {
+            if (confirm('Khôi phục giao diện ban đầu?')) {
+                bioData = JSON.parse(JSON.stringify(defaultData));
+                saveData();
+                renderProfile();
+                populateEditorFields();
+                showToast('Đã khôi phục!');
+            }
+        }
+
+        // EXPORT & CHUNKING CODE LOGIC
+        function generateExportHtml() {
+            return `<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${escapeHtml(bioData.name)} - Bio Link</title>
+    <script src="https://cdn.tailwindcss.com"><\/script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .link-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .link-card:hover { transform: translateY(-3px) scale(1.01); }
+        .glass-panel { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.15); }
+    </style>
+</head>
+${document.body.outerHTML.replace(/<header[\s\S]*?<\/header>/, '').replace(/<div id="edit-panel"[\s\S]*?<\/div>\s*<\/div>/, '').replace(/<div id="export-modal"[\s\S]*?<\/div>\s*<\/div>/, '').replace(/<div id="link-modal"[\s\S]*?<\/div>\s*<\/div>/, '')}
+</html>`;
+        }
+
+        function openExportModal() {
+            const modal = document.getElementById('export-modal');
+            const codeArea = document.getElementById('export-code-area');
+
+            currentFullHtml = generateExportHtml();
+            codeArea.value = currentFullHtml;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeExportModal() {
+            document.getElementById('export-modal').classList.add('hidden');
+            document.getElementById('export-modal').classList.remove('flex');
+        }
+
+        // Tải về trực tiếp bằng Blob
+        function downloadHtmlFileDirect() {
+            const htmlContent = generateExportHtml();
+            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('Đã tải tệp index.html!');
+        }
+
+        // Sao chép chia nhỏ (Chunking) dành cho bàn phím giới hạn dòng
+        function copyChunk(partNumber) {
+            const lines = currentFullHtml.split('\n');
+            const totalLines = lines.length;
+            const chunkSize = Math.ceil(totalLines / 3);
+
+            let chunkLines = [];
+            if (partNumber === 1) {
+                chunkLines = lines.slice(0, chunkSize);
+            } else if (partNumber === 2) {
+                chunkLines = lines.slice(chunkSize, chunkSize * 2);
+            } else if (partNumber === 3) {
+                chunkLines = lines.slice(chunkSize * 2);
+            }
+
+            const chunkText = chunkLines.join('\n');
+            copyToClipboard(chunkText);
+            showToast(`Đã sao chép Phần ${partNumber}/3!`);
+        }
+
+        function copyFullHtmlDirect() {
+            copyToClipboard(currentFullHtml);
+            showToast('Đã sao chép toàn bộ HTML!');
+        }
+
+        function selectFullText() {
+            const textarea = document.getElementById('export-code-area');
+            textarea.select();
+            textarea.setSelectionRange(0, 99999);
+            showToast('Đã bôi đen toàn bộ mã!');
+        }
+
+        function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text);
+            } else {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            }
+        }
+
+        function downloadJsonData() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(bioData, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", "bio-data.json");
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    </script>
+
+</body>
+</html>
