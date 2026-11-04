@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QTuan - Bio Link</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neon': '0 0 15px rgba(236, 72, 153, 0.5), 0 0 30px rgba(139, 92, 246, 0.3)',
+                        'cyber': '4px 4px 0px #00ffcc',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.1); }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 4px; }
+        .link-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .link-card:hover { transform: translateY(-3px) scale(1.01); }
+        .glass-panel { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.15); }
+    </style>
+</head>
+<body id="app-body" class="bg-gray-900 text-white font-sans min-h-screen transition-colors duration-500 relative pb-10" style="">
+
+    <!-- Background Image Layer -->
+    <div id="bg-image-layer" class="fixed inset-0 pointer-events-none bg-cover bg-center transition-all duration-500 z-0 " style="background-image: url('https://i.ibb.co/rRMZMk9h/file-0000000029f48211938a2a560fb9149c.png'); filter: blur(0px);"></div>
+    <div id="bg-overlay-layer" class="fixed inset-0 pointer-events-none transition-all duration-500 z-0 " style="background-color: rgba(0, 0, 0, 0.22);"></div>
+
+    <!-- Main Bio Container -->
+    <main class="max-w-md mx-auto px-4 pt-10 pb-6 flex flex-col items-center justify-between min-h-screen relative z-10">
+
+        <!-- Top & Middle Content Wrapper -->
+        <div class="w-full flex flex-col items-center">
+            <!-- Avatar & Verified Badge -->
+            <div class="relative group mb-4">
+                <div id="avatar-container" class="relative">
+                    <img id="view-avatar" src="https://i.ibb.co/SwD5fZTx/67889f15a0ce8216e896081202535917.jpg" 
+                         alt="Avatar" class="w-28 h-28 rounded-full object-cover border-4 border-white/20 shadow-xl">
+                    <div id="verified-badge" class="absolute bottom-1 right-1 bg-blue-500 text-white text-xs p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-lg">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Name & Bio -->
+            <div class="text-center mb-6 w-full px-2">
+                <h1 id="view-name" class="text-2xl font-bold font-outfit tracking-wide mb-1">QTuan</h1>
+                <p id="view-bio" class="text-sm opacity-80 leading-relaxed max-w-xs mx-auto">Nhìn cái gì?</p>
+            </div>
+
+            <!-- Social Icons Row -->
+            <div id="social-links-container" class="flex flex-wrap justify-center gap-3 mb-8 max-w-xs hidden">
+                <a href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition backdrop-blur-md border border-white/10"><i class="fa-brands fa-facebook-f text-base"></i></a>
+<a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition backdrop-blur-md border border-white/10"><i class="fa-brands fa-instagram text-base"></i></a>
+<a href="https://tiktok.com" target="_blank" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition backdrop-blur-md border border-white/10"><i class="fa-brands fa-tiktok text-base"></i></a>
+
+            </div>
+
+            <!-- Links List -->
+            <div id="links-container" class="w-full space-y-4">
+                
+                    <div class="w-full">
+                        <a href="https://toiyeumeban.site/" target="_blank" class="bg-white/10 backdrop-blur-md text-white rounded-2xl border border-white/10 hover:bg-white/15 p-4 flex items-center justify-between link-card group">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-ghost text-base"></i>
+                                <span class="font-semibold text-sm">Web Get Key Phantom Free</span>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-50 group-hover:opacity-100 transition"></i>
+                        </a>
+                    </div>
+                    <div class="w-full">
+                        <a href="https://link4m.net/oEpxCyw" target="_blank" class="bg-white/10 backdrop-blur-md text-white rounded-2xl border border-white/10 hover:bg-white/15 p-4 flex items-center justify-between link-card group">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-gun text-base"></i>
+                                <span class="font-semibold text-sm">Định Vị Súng 49K Của IZC</span>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-50 group-hover:opacity-100 transition"></i>
+                        </a>
+                    </div>
+                    <div class="w-full">
+                        <a href="https://zalo.me/g/bttzjw2jwt7vxiyunpx6" target="_blank" class="bg-white/10 backdrop-blur-md text-white rounded-2xl border border-white/10 hover:bg-white/15 p-4 flex items-center justify-between link-card group">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-comment-dots text-base"></i>
+                                <span class="font-semibold text-sm">Nhóm Zalo</span>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-50 group-hover:opacity-100 transition"></i>
+                        </a>
+                    </div>
+                    <div class="w-full">
+                        <a href="https://t.me/tuqnwz" target="_blank" class="bg-white/10 backdrop-blur-md text-white rounded-2xl border border-white/10 hover:bg-white/15 p-4 flex items-center justify-between link-card group">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-telegram text-base"></i>
+                                <span class="font-semibold text-sm">Nhóm Tele</span>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-50 group-hover:opacity-100 transition"></i>
+                        </a>
+                    </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-16 text-center text-xs opacity-60 pb-4">
+            <p>By QTuan</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // Baked Static Theme Configuration
+        const currentTheme = "neon";
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.getElementById('app-body');
+            const avatar = document.getElementById('view-avatar');
+            
+            if ("image" === 'theme') {
+                switch (currentTheme) {
+                    case 'light':
+                        body.classList.add('bg-slate-50', 'text-slate-900');
+                        if (avatar) avatar.className = "w-28 h-28 rounded-full object-cover border-4 border-slate-300 shadow-lg";
+                        break;
+                    case 'neon':
+                        body.classList.add('bg-gradient-to-br', 'from-gray-950', 'via-purple-950', 'to-slate-950', 'text-white');
+                        if (avatar) avatar.className = "w-28 h-28 rounded-full object-cover border-4 border-pink-500 shadow-neon";
+                        break;
+                    case 'pastel':
+                        body.classList.add('bg-gradient-to-tr', 'from-rose-100', 'via-purple-100', 'to-sky-100', 'text-slate-800');
+                        if (avatar) avatar.className = "w-28 h-28 rounded-full object-cover border-4 border-white shadow-md";
+                        break;
+                    case 'cyberpunk':
+                        body.classList.add('bg-black', 'text-yellow-400');
+                        if (avatar) avatar.className = "w-28 h-28 rounded-full object-cover border-4 border-yellow-400 shadow-cyber";
+                        break;
+                    case 'glass':
+                        body.classList.add('bg-gradient-to-br', 'from-slate-900', 'via-indigo-950', 'to-blue-900', 'text-white');
+                        if (avatar) avatar.className = "w-28 h-28 rounded-full object-cover border-4 border-white/30 shadow-glass backdrop-blur-md";
+                        break;
+                    case 'dark':
+                    default:
+                        body.classList.add('bg-gray-900', 'text-white');
+                        if (avatar) avatar.className = "w-28 h-28 rounded-full object-cover border-4 border-white/20 shadow-xl";
+                        break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
