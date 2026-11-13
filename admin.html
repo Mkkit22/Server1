@@ -1,234 +1,91 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin - Nạp Key Phantom</title>
-
-<!-- Google Fonts hiện đại -->
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-* { box-sizing: border-box; }
-
-:root {
-  --blue: #168bff;
-  --yellow: #ffd84d;
-  --green: #4ade80;
-  --white: #fff;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: #0f172a;
-  color: white;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  overflow-x: hidden;
-}
-
-/* Background ánh sáng rực rỡ đồng bộ */
-.bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(22, 139, 255, 0.45), transparent 45%),
-    radial-gradient(circle at 80% 80%, rgba(255, 216, 77, 0.3), transparent 45%),
-    linear-gradient(rgba(10, 25, 50, 0.4), rgba(5, 15, 30, 0.7)),
-    url("https://i.ibb.co/qYn7C0Mn/8945ecd69bcdf96bbf90093ae108d1ad.jpg") center/cover no-repeat;
-}
-
-/* Hiệu ứng Kính lỏng (Liquid Glass) */
-.card {
-  width: 100%;
-  max-width: 440px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
-  border-left: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 28px;
-  padding: 32px 24px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4),
-              inset 0 0 25px rgba(255, 255, 255, 0.08);
-}
-
-.card h2 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--yellow);
-  text-shadow: 0 0 15px rgba(255, 216, 77, 0.4);
-}
-
-label {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  color: #e2e8f0;
-  margin-bottom: 6px;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 18px;
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: white;
-  border-radius: 14px;
-  font-family: inherit;
-  font-size: 14px;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-input:focus, textarea:focus {
-  border-color: rgba(255, 216, 77, 0.6);
-  background: rgba(15, 23, 42, 0.8);
-  box-shadow: 0 0 15px rgba(255, 216, 77, 0.2);
-}
-
-textarea {
-  height: 130px;
-  resize: vertical;
-}
-
-/* Nút bấm viền vàng Liquid Glass */
-.btn {
-  width: 100%;
-  padding: 15px;
-  border-radius: 16px;
-  background: rgba(255, 216, 77, 0.15);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 216, 77, 0.5);
-  border-top: 1px solid rgba(255, 216, 77, 0.8);
-  border-left: 1px solid rgba(255, 216, 77, 0.8);
-  color: var(--yellow);
-  font-size: 16px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
-              inset 0 1px 4px rgba(255, 255, 255, 0.4),
-              inset 0 0 15px rgba(255, 216, 77, 0.15);
-}
-
-.btn:hover {
-  background: rgba(255, 216, 77, 0.25);
-  border-color: rgba(255, 216, 77, 0.9);
-  transform: translateY(-2px);
-  box-shadow: 0 15px 35px rgba(255, 216, 77, 0.3),
-              inset 0 1px 6px rgba(255, 255, 255, 0.6),
-              0 0 20px rgba(255, 216, 77, 0.4);
-}
-
-.btn:active { transform: scale(0.97); }
-
-.msg {
-  margin-top: 16px;
-  font-weight: 700;
-  text-align: center;
-  font-size: 14px;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-footer {
-  text-align: center;
-  margin-top: 20px;
-  color: #94a3b8;
-  font-size: 12px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Quản Trị Key</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { background: #0f172a; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .admin-card { width: 100%; max-width: 500px; background: rgba(255,255,255,0.07); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+        h2 { text-align: center; color: #ffd84d; margin-top: 0; }
+        .stats { background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 10px; margin-bottom: 20px; text-align: center; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-size: 14px; color: #cbd5e1; }
+        input, textarea { width: 100%; padding: 12px; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; color: #fff; font-size: 14px; box-sizing: border-box; }
+        textarea { height: 100px; resize: vertical; }
+        button { width: 100%; padding: 12px; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 15px; margin-top: 5px; transition: 0.2s; }
+        .btn-phantom { background: #2563eb; color: #fff; }
+        .btn-novax { background: #059669; color: #fff; margin-top: 10px; }
+        button:hover { opacity: 0.9; }
+    </style>
 </head>
 <body>
+    <div class="admin-card">
+        <h2>⚡ Admin Panel</h2>
+        
+        <div class="stats" id="statsBox">
+            Đang tải thống kê kho...
+        </div>
 
-<div class="bg"></div>
+        <div class="form-group">
+            <label>Mật khẩu Admin:</label>
+            <input type="password" id="adminPass" placeholder="Nhập mật khẩu...">
+        </div>
 
-<div class="card">
-    <h2>🛠️ QUẢN TRỊ NẠP KEY</h2>
-    
-    <label>🔑 Mật khẩu Admin:</label>
-    <input type="password" id="passInput" placeholder="Nhập mật khẩu quản trị...">
+        <div class="form-group">
+            <label>Danh sách Key (Mỗi key 1 dòng):</label>
+            <textarea id="keyInput" placeholder="KEY_ABC_123&#10;KEY_XYZ_789"></textarea>
+        </div>
 
-    <label>📜 Danh sách Key (Mỗi key một dòng):</label>
-    <textarea id="keysInput" placeholder="KEY_ABC_1&#10;KEY_ABC_2&#10;KEY_ABC_3"></textarea>
+        <button class="btn-phantom" onclick="addKeys('phantom')">➕ Nạp Key Phantom & Aimhack</button>
+        <button class="btn-novax" onclick="addKeys('novax')">➕ Nạp Key Novax</button>
+    </div>
 
-    <button class="btn" onclick="addKeys()">➕ NẠP KEY VÀO KHO</button>
-    <div class="msg" id="msgBox"></div>
-</div>
+    <script>
+        const BACKEND_URL = "https://tuanq.onrender.com";
 
-<script>
-    const BACKEND_URL = "https://tuanq.onrender.com";
-
-    async function addKeys() {
-        const pass = document.getElementById('passInput').value.trim();
-        const rawKeys = document.getElementById('keysInput').value;
-        const msgBox = document.getElementById('msgBox');
-
-        if (!pass || !rawKeys) {
-            alert("Vui lòng nhập đầy đủ mật khẩu và danh sách key!");
-            return;
-        }
-
-        const keysArray = rawKeys.split('\n').map(k => k.trim()).filter(k => k.length > 0);
-
-        if (keysArray.length === 0) {
-            alert("Danh sách key trống!");
-            return;
-        }
-
-        msgBox.style.color = "#ffd84d";
-        msgBox.style.background = "rgba(255, 216, 77, 0.1)";
-        msgBox.innerText = "⏳ Đang gửi dữ liệu lên server...";
-
-        try {
-            const res = await fetch(`${BACKEND_URL}/api/admin/add-keys`, {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ pass: pass, keys: keysArray })
-            });
-
-            const textResponse = await res.text();
-            let data;
+        async function loadStats() {
             try {
-                data = JSON.parse(textResponse);
-            } catch (err) {
-                throw new Error("Phản hồi từ server không hợp lệ: " + textResponse);
+                const res = await fetch(`${BACKEND_URL}/api/admin/stats`);
+                const data = await res.json();
+                if (data.success) {
+                    document.getElementById('statsBox').innerHTML = 
+                        `📦 Kho Phantom: <b style="color:#60a5fa">${data.totalKeys}</b> key | 🛡️ Kho Novax: <b style="color:#34d399">${data.totalNovaxKeys}</b> key`;
+                }
+            } catch (e) {
+                document.getElementById('statsBox').innerText = "Không thể tải thống kê kho.";
             }
-
-            if (res.ok && data.success) {
-                msgBox.style.color = "#4ade80";
-                msgBox.style.background = "rgba(74, 222, 128, 0.1)";
-                msgBox.innerText = data.message;
-                document.getElementById('keysInput').value = ""; 
-            } else {
-                msgBox.style.color = "#f87171";
-                msgBox.style.background = "rgba(248, 113, 113, 0.1)";
-                msgBox.innerText = "Lỗi: " + (data.message || "Sai mật khẩu hoặc lỗi server");
-            }
-        } catch (e) {
-            msgBox.style.color = "#f87171";
-            msgBox.style.background = "rgba(248, 113, 113, 0.1)";
-            msgBox.innerText = "Lỗi kết nối tới máy chủ! (Kiểm tra lại Render)";
-            console.error(e);
         }
-    }
-</script>
 
+        async function addKeys(type) {
+            const pass = document.getElementById('adminPass').value;
+            const rawText = document.getElementById('keyInput').value;
+            const keys = rawText.split('\n').map(k => k.trim()).filter(k => k.length > 0);
+
+            if (!pass) return alert("Vui lòng nhập mật khẩu admin!");
+            if (keys.length === 0) return alert("Vui lòng nhập ít nhất 1 key!");
+
+            const endpoint = type === 'novax' ? '/api/admin/add-novax-keys' : '/api/admin/add-keys';
+
+            try {
+                const res = await fetch(`${BACKEND_URL}${endpoint}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ pass, keys })
+                });
+                const data = await res.json();
+                alert(data.message);
+                if (data.success) {
+                    document.getElementById('keyInput').value = '';
+                    loadStats();
+                }
+            } catch (e) {
+                alert("Lỗi kết nối tới máy chủ!");
+            }
+        }
+
+        loadStats();
+    </script>
 </body>
 </html>
