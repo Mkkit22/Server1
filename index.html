@@ -3,256 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Getkey Free - QTuan</title>
+    <title>Hệ Thống Getkey - QTuan</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Thêm thư viện Font Awesome để hiển thị icon Key -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { box-sizing: border-box; }
         body { 
             margin: 0; 
             min-height: 100vh; 
-            background: #0f172a; 
+            background: #0b1120; 
             color: #fff; 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             display: flex; 
-            align-items: center; 
             justify-content: center; 
-            padding: 20px; 
+            padding: 15px;
+            padding-bottom: 95px;
         }
         .bg { 
             position: fixed; 
             inset: 0; 
             z-index: -1; 
-            background: radial-gradient(circle at 20% 20%, rgba(22, 139, 255, 0.45), transparent 45%), 
-                        radial-gradient(circle at 80% 80%, rgba(255, 216, 77, 0.3), transparent 45%), 
-                        linear-gradient(rgba(10, 25, 50, 0.4), rgba(5, 15, 30, 0.7)), 
+            background: radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.25), transparent 45%), 
+                        radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.25), transparent 45%), 
+                        linear-gradient(rgba(10, 18, 32, 0.72), rgba(6, 12, 24, 0.88)), 
                         url("https://i.ibb.co/rRMZMk9h/file-0000000029f48211938a2a560fb9149c.png") center/cover no-repeat; 
         }
-        
-        /* Hiệu ứng Full Liquid Glass Card */
-        .card { 
-            width: 100%; 
-            max-width: 440px; 
-            background: rgba(255, 255, 255, 0.05); 
-            backdrop-filter: blur(25px); 
-            -webkit-backdrop-filter: blur(25px); 
-            border: 1px solid rgba(255, 255, 255, 0.15); 
-            border-radius: 30px; 
-            padding: 32px 24px; 
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.05); 
-            text-align: center; 
-        }
-        .avatar { 
-            width: 95px; 
-            height: 95px; 
-            object-fit: cover; 
-            border-radius: 50%; 
-            border: 3px solid rgba(255, 216, 77, 0.8); 
-            margin-bottom: 15px; 
-            box-shadow: 0 0 20px rgba(255, 216, 77, 0.4);
-        }
-        h1 { margin: 0 0 8px; font-size: 24px; font-weight: 800; color: #ffd84d; text-shadow: 0 2px 10px rgba(255,216,77,0.3); }
-        p { color: #cbd5e1; font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
 
-        /* Khu vực tab nhiệm vụ mạng xã hội */
-        .tasks-box {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 18px;
-            padding: 16px;
-            margin-bottom: 20px;
-            text-align: left;
-            backdrop-filter: blur(10px);
-        }
-        .tasks-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: #fbbf24;
-            margin-bottom: 12px;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .task-item {
+        .container { width: 100%; max-width: 440px; }
+
+        .top-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 10px;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 10px 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: 0.2s;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 12px 16px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+        .user-info { display: flex; align-items: center; gap: 12px; }
+        .avatar { width: 46px; height: 46px; object-fit: cover; border-radius: 50%; border: 2px solid #34d399; }
+        .user-name { font-weight: 800; font-size: 15px; color: #fff; }
+        .user-id { font-size: 12px; color: #94a3b8; }
+        .badge {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(52, 211, 153, 0.4);
+            color: #34d399; padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 800;
+        }
+
+        .card { 
+            background: rgba(255, 255, 255, 0.04); 
+            backdrop-filter: blur(25px); 
+            -webkit-backdrop-filter: blur(25px); 
+            border: 1px solid rgba(255, 255, 255, 0.12); 
+            border-radius: 24px; padding: 20px; 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45); margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 12px; font-weight: 800; color: #34d399;
+            margin-bottom: 10px; display: flex; align-items: center; gap: 8px; text-transform: uppercase;
+        }
+
+        .category-trigger {
+            background: rgba(15, 23, 42, 0.65); border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;
+            cursor: pointer; margin-bottom: 18px; transition: 0.2s;
+        }
+        .category-trigger:hover { border-color: #34d399; }
+        .cat-trigger-left { display: flex; align-items: center; gap: 12px; }
+        
+        /* Ảnh bo tròn cho danh mục */
+        .cat-img-box {
+            width: 38px; height: 38px; border-radius: 50%;
+            object-fit: cover; border: 1.5px solid rgba(255, 255, 255, 0.3);
+        }
+        .cat-trigger-name { font-weight: 700; font-size: 15px; color: #fff; }
+
+        .product-box {
+            background: rgba(15, 23, 42, 0.65); border: 1px solid rgba(52, 211, 153, 0.35);
+            border-radius: 16px; padding: 16px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px;
+        }
+        .prod-duration { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 5px; }
+        .prod-stock { font-size: 12px; font-weight: 700; color: #94a3b8; display: flex; align-items: center; gap: 6px; }
+        .prod-stock span { color: #38bdf8; }
+        .prod-free-tag {
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 14px; border-radius: 12px; font-size: 13px; font-weight: 800; color: #34d399;
+        }
+
+        .tasks-box {
+            background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px; padding: 14px; margin-bottom: 16px;
+        }
+        .task-item {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 8px; background: rgba(255, 255, 255, 0.03); padding: 9px 12px; border-radius: 10px;
         }
         .task-item:last-child { margin-bottom: 0; }
-        .task-label {
-            font-size: 13px;
-            font-weight: 600;
-            color: #e2e8f0;
-        }
+        .task-label { font-size: 12px; font-weight: 600; color: #cbd5e1; }
         .task-btn {
-            background: rgba(37, 99, 235, 0.3);
-            border: 1px solid rgba(59, 130, 246, 0.5);
-            color: #93c5fd;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-        .task-btn:hover {
-            background: rgba(37, 99, 235, 0.6);
-            color: #fff;
+            background: rgba(37, 99, 235, 0.25); border: 1px solid rgba(59, 130, 246, 0.45);
+            color: #93c5fd; padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; text-decoration: none;
         }
         .task-btn.completed {
-            background: rgba(5, 150, 105, 0.3);
-            border-color: rgba(16, 185, 129, 0.5);
-            color: #6ee7b7;
-            pointer-events: none;
+            background: rgba(16, 185, 129, 0.25); border-color: rgba(52, 211, 153, 0.45); color: #6ee7b7; pointer-events: none;
         }
 
-        /* Khóa/Mở khóa nút Getkey */
-        #getkeyContainer {
-            opacity: 0.3;
-            pointer-events: none;
-            transition: 0.4s ease;
+        #getkeyContainer { opacity: 0.35; pointer-events: none; transition: 0.3s; }
+        #getkeyContainer.unlocked { opacity: 1; pointer-events: auto; }
+        .btn-getkey {
+            width: 100%; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none;
+            padding: 15px; font-size: 15px; font-weight: 800; border-radius: 16px; cursor: pointer;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35); display: flex; align-items: center; justify-content: center; gap: 8px;
         }
-        #getkeyContainer.unlocked {
-            opacity: 1;
-            pointer-events: auto;
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            z-index: 200; display: none; align-items: flex-end; justify-content: center;
         }
-        .lock-notice {
-            font-size: 12px;
-            color: #f87171;
-            margin-bottom: 12px;
-            font-weight: 600;
+        .modal-overlay.show { display: flex; animation: fadeIn 0.2s ease; }
+        .bottom-sheet {
+            width: 100%; max-width: 460px; background: #131b2e;
+            border-top: 1px solid rgba(255, 255, 255, 0.15); border-radius: 26px 26px 0 0;
+            padding: 16px 20px 30px; box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.6);
+            animation: slideUp 0.25s ease;
         }
+        .sheet-handle { width: 42px; height: 4px; background: rgba(255, 255, 255, 0.2); border-radius: 4px; margin: 0 auto 16px; }
+        .sheet-title { text-align: center; font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .sheet-title i { color: #34d399; }
+        .search-input {
+            width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px; padding: 12px 14px; color: #fff; font-size: 13px; font-family: inherit; margin-bottom: 14px; outline: none;
+        }
+        .search-input:focus { border-color: #34d399; }
+        .sheet-item {
+            background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 10px; cursor: pointer; transition: 0.2s;
+        }
+        .sheet-item:hover, .sheet-item.selected { background: rgba(52, 211, 153, 0.12); border-color: #34d399; }
+        .sheet-item-left { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 15px; }
+        .sheet-item i.fa-chevron-right { color: #94a3b8; font-size: 13px; }
 
-        /* Kiểu nút chung Liquid Glass */
-        .btn { 
-            width: 100%; 
-            backdrop-filter: blur(12px); 
-            -webkit-backdrop-filter: blur(12px);
-            padding: 15px; 
-            font-size: 15px; 
-            border-radius: 16px; 
-            cursor: pointer; 
-            font-weight: 800; 
-            margin-bottom: 12px; 
-            transition: 0.3s; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); 
-        }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Nút 1: Get Key Phantom & Aimhack (1h) - Trắng xám Liquid Glass + Icon Key */
-        .btn-phantom {
-            background: rgba(255, 255, 255, 0.12);
-            color: #f8fafc;
-            border: 1px solid rgba(255, 255, 255, 0.25);
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: rgba(11, 17, 32, 0.92); backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-around; padding: 10px 0; z-index: 100;
         }
-        .btn-phantom:hover {
-            background: rgba(255, 255, 255, 0.25);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-2px);
+        .nav-item {
+            display: flex; flex-direction: column; align-items: center;
+            color: #64748b; text-decoration: none; font-size: 10px; font-weight: 700; gap: 4px; cursor: pointer;
         }
-
-        /* Nút 2: Getkey free novax (9h-30d) - Xanh dương Liquid Glass + Icon Key */
-        .btn-novax { 
-            background: rgba(37, 99, 235, 0.25); 
-            color: #ffffff;
-            border: 1px solid rgba(59, 130, 246, 0.4); 
-        }
-        .btn-novax:hover { 
-            transform: translateY(-2px); 
-            background: rgba(37, 99, 235, 0.45);
-            border-color: rgba(59, 130, 246, 0.8);
-        }
-
-        .bio-link { 
-            display: inline-block; 
-            margin-top: 10px; 
-            color: #60a5fa; 
-            text-decoration: none; 
-            font-size: 14px; 
-            font-weight: 600; 
-        }
-        .bio-link:hover { text-decoration: underline; }
+        .nav-item i { font-size: 16px; }
+        .nav-item.active { color: #34d399; }
     </style>
 </head>
 <body>
     <div class="bg"></div>
-    <div class="card">
-        <img class="avatar" src="https://i.ibb.co/SwD5fZTx/67889f15a0ce8216e896081202535917.jpg" alt="Avatar">
-        <h1>Hệ Thống Getkey Free</h1>
-        <p>Hoàn thành các nhiệm vụ bên dưới để mở khóa và lấy key hoàn toàn miễn phí!</p>
-        
-        <!-- Tab nhiệm vụ mạng xã hội -->
-        <div class="tasks-box">
-            <div class="tasks-title">📌 Hoàn thành nhiệm vụ mở khóa</div>
-            
-            <div class="task-item">
-                <span class="task-label">1. Follow kênh TikTok</span>
-                <a href="https://www.tiktok.com/@tuannqq?_r=1&_t=ZS-9BMxiSmmin4" target="_blank" class="task-btn" id="task1" onclick="completeTask(1)">Follow</a>
+    <div class="container">
+        <div class="top-header">
+            <div class="user-info">
+                <img class="avatar" src="https://i.ibb.co/SwD5fZTx/67889f15a0ce8216e896081202535917.jpg" alt="Avatar">
+                <div>
+                    <div class="user-name">TUQNW</div>
+                    <div class="user-id">ID: 6619673937</div>
+                </div>
             </div>
-            
-            <div class="task-item">
-                <span class="task-label">2. Tham gia nhóm Zalo</span>
-                <a href="https://zalo.me/g/bttzjw2jwt7vxiyunpx6" target="_blank" class="task-btn" id="task2" onclick="completeTask(2)">Vào nhóm</a>
-            </div>
-            
-            <div class="task-item">
-                <span class="task-label">3. Tham gia nhóm Telegram</span>
-                <a href="https://t.me/tuqnwz" target="_blank" class="task-btn" id="task3" onclick="completeTask(3)">Vào nhóm</a>
-            </div>
+            <div class="badge">GETKEY FREE</div>
         </div>
 
-        <!-- Khu vực nút getkey bị ẩn/khóa -->
-        <div id="getkeyContainer">
-            <div class="lock-notice" id="lockNotice">🔒 Vui lòng hoàn thành đủ 3 nhiệm vụ trên để mở khóa!</div>
-            
-            <!-- Nút 1: Phantom & Aimhack (Trắng xám + Icon Key) -->
-            <button class="btn btn-phantom" onclick="startGetKey('/api/start')">
-                <i class="fa-solid fa-key"></i> Get Key Phantom & Aimhack (1h)
-            </button>
-            
-            <!-- Nút 2: Novax (Xanh dương + Icon Key) -->
-            <button class="btn btn-novax" onclick="startGetKey('/api/start-novax')">
-                <i class="fa-solid fa-key"></i> Getkey Free Novax (9h-30d)
-            </button>
-        </div>
+        <div class="card">
+            <div class="section-title"><i class="fa-solid fa-list"></i> Chọn Danh Mục</div>
+            <div class="category-trigger" onclick="openCategoryModal()">
+                <div class="cat-trigger-left">
+                    <img class="cat-img-box" id="activeCatImg" src="https://i.ibb.co/6cWtQPyH/IMG-20261117-175218-954.jpg" alt="Cat">
+                    <div class="cat-trigger-name" id="activeCatName">Phantom & AimHack</div>
+                </div>
+                <i class="fa-solid fa-chevron-down" style="color: #94a3b8;"></i>
+            </div>
 
-        <div>
-            <a href="https://toiyeumeban.site/bio/" class="bio-link">🌐 Ghé thăm trang Bio cá nhân</a>
+            <div class="section-title"><i class="fa-solid fa-box"></i> Sản Phẩm: <span id="prodSectionTitle" style="color:#fff;">PHANTOM & AIMHACK</span></div>
+            <div class="product-box">
+                <div>
+                    <div class="prod-duration" id="prodDurationText">GÓI 1 GIỜ (1H)</div>
+                    <div class="prod-stock"><i class="fa-solid fa-layer-group"></i> KHO: <span id="prodStockCount">Đang tải...</span></div>
+                </div>
+                <div class="prod-free-tag">MIỄN PHÍ</div>
+            </div>
+
+            <div class="section-title"><i class="fa-solid fa-shield-halved"></i> Nhiệm Vụ Mở Khóa</div>
+            <div class="tasks-box">
+                <div class="task-item">
+                    <span class="task-label">1. Follow Kênh TikTok</span>
+                    <a href="https://tiktok.com/@link_tiktok_cua_ban" target="_blank" class="task-btn" id="task1" onclick="completeTask(1)">Follow</a>
+                </div>
+                <div class="task-item">
+                    <span class="task-label">2. Tham Gia Nhóm Zalo</span>
+                    <a href="https://zalo.me/link_nhom_zalo_cua_ban" target="_blank" class="task-btn" id="task2" onclick="completeTask(2)">Vào nhóm</a>
+                </div>
+                <div class="task-item">
+                    <span class="task-label">3. Tham Gia Nhóm Telegram</span>
+                    <a href="https://t.me/link_nhom_tele_cua_ban" target="_blank" class="task-btn" id="task3" onclick="completeTask(3)">Vào nhóm</a>
+                </div>
+            </div>
+
+            <div id="getkeyContainer">
+                <div style="font-size: 11px; color: #f87171; text-align: center; margin-bottom: 8px; font-weight: 600;" id="lockNotice">
+                    🔒 Hoàn thành đủ 3 nhiệm vụ trên để mở khóa!
+                </div>
+                <button class="btn-getkey" onclick="startGetKey()">
+                    <i class="fa-solid fa-key"></i> GET KEY NGAY
+                </button>
+            </div>
         </div>
+  </div>
+      <div class="modal-overlay" id="categoryModal" onclick="closeCategoryModal(event)">
+        <div class="bottom-sheet" onclick="event.stopPropagation()">
+            <div class="sheet-handle"></div>
+            <div class="sheet-title"><i class="fa-solid fa-list"></i> CHỌN DANH MỤC</div>
+            
+            <input type="text" class="search-input" id="catSearchInput" placeholder="NHẬP TÊN DANH MỤC ĐỂ TÌM..." onkeyup="filterCategories()">
+            
+            <div id="categoryList">
+                <div class="sheet-item selected" data-name="phantom aimhack" onclick="selectCategory('phantom')">
+                    <div class="sheet-item-left">
+                        <img class="cat-img-box" src="https://i.ibb.co/6cWtQPyH/IMG-20261117-175218-954.jpg" alt="Phantom">
+                        <span>Phantom & AimHack</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+                <div class="sheet-item" data-name="novax client" onclick="selectCategory('novax')">
+                    <div class="sheet-item-left">
+                        <img class="cat-img-box" src="https://i.ibb.co/j91JVCSn/logo.png" alt="Novax">
+                        <span>NovaX Client</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+                <div class="sheet-item" data-name="zytron 1day" onclick="selectCategory('zytron')">
+                    <div class="sheet-item-left">
+                        <img class="cat-img-box" src="https://miniapp.huutien.store/dung299_bot1/uploads/categories/admin_20261117_065949_64e1563104.jpg" alt="Zytron">
+                        <span>Zytron (1 Day)</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active"><i class="fa-solid fa-key"></i> GET KEY</a>
+        <a href="/bio" class="nav-item"><i class="fa-solid fa-address-card"></i> TRANG BIO</a>
+        <a href="#" class="nav-item" onclick="alert('Hướng dẫn: Chọn danh mục key muốn lấy -> Hoàn thành 3 nhiệm vụ -> Bấm GET KEY NGAY và vượt qua link xác nhận để nhận key!')"><i class="fa-solid fa-circle-info"></i> HƯỚNG DẪN</a>
     </div>
 
     <script>
         const BACKEND_URL = "https://tuanq.onrender.com";
+        let currentMode = 'phantom';
+        let stockData = { phantom: '...', novax: '...', zytron: '...' };
         const completedTasks = { 1: false, 2: false, 3: false };
+
+        async function loadStockStats() {
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/admin/stats`);
+                const data = await res.json();
+                if (data.success) {
+                    stockData.phantom = data.totalKeys;
+                    stockData.novax = data.totalNovaxKeys;
+                    stockData.zytron = data.totalNovaxKeys; // Tạm dùng chung kho novax hoặc tùy chỉnh nếu tạo schema riêng
+                    updateProductUI();
+                }
+            } catch (e) {
+                stockData.phantom = "0";
+                stockData.novax = "0";
+                stockData.zytron = "0";
+                updateProductUI();
+            }
+        }
+
+        function openCategoryModal() {
+            document.getElementById('categoryModal').classList.add('show');
+        }
+
+        function closeCategoryModal(e) {
+            if (e) e.preventDefault();
+            document.getElementById('categoryModal').classList.remove('show');
+        }
+
+        function filterCategories() {
+            const keyword = document.getElementById('catSearchInput').value.toLowerCase();
+            document.querySelectorAll('.sheet-item').forEach(item => {
+                const name = item.getAttribute('data-name');
+                item.style.display = name.includes(keyword) ? 'flex' : 'none';
+            });
+        }
+
+        function selectCategory(mode) {
+            currentMode = mode;
+            const items = document.querySelectorAll('.sheet-item');
+            items[0].classList.toggle('selected', mode === 'phantom');
+            items[1].classList.toggle('selected', mode === 'novax');
+            items[2].classList.toggle('selected', mode === 'zytron');
+
+            const imgBox = document.getElementById('activeCatImg');
+            const nameText = document.getElementById('activeCatName');
+
+            if (mode === 'phantom') {
+                imgBox.src = 'https://i.ibb.co/6cWtQPyH/IMG-20261117-175218-954.jpg';
+                nameText.innerText = 'Phantom & AimHack';
+            } else if (mode === 'novax') {
+                imgBox.src = 'https://i.ibb.co/j91JVCSn/logo.png';
+                nameText.innerText = 'NovaX Client';
+            } else {
+                imgBox.src = 'https://miniapp.huutien.store/dung299_bot1/uploads/categories/admin_20261117_065949_64e1563104.jpg';
+                nameText.innerText = 'Zytron (1 Day)';
+            }
+
+            updateProductUI();
+            closeCategoryModal();
+        }
+
+        function updateProductUI() {
+            if (currentMode === 'phantom') {
+                document.getElementById('prodSectionTitle').innerText = 'PHANTOM & AIMHACK';
+                document.getElementById('prodDurationText').innerText = 'GÓI 1 GIỜ (1H)';
+                document.getElementById('prodStockCount').innerText = `${stockData.phantom} key`;
+            } else if (currentMode === 'novax') {
+                document.getElementById('prodSectionTitle').innerText = 'NOVAX CLIENT';
+                document.getElementById('prodDurationText').innerText = 'GÓI RANDOM (9H - 30D)';
+                document.getElementById('prodStockCount').innerText = `${stockData.novax} key`;
+            } else {
+                document.getElementById('prodSectionTitle').innerText = 'ZYTRON CLIENT';
+                document.getElementById('prodDurationText').innerText = 'GÓI 1 NGÀY (1 DAY)';
+                document.getElementById('prodStockCount').innerText = `${stockData.zytron} key`;
+            }
+        }
 
         function completeTask(id) {
             completedTasks[id] = true;
             const btn = document.getElementById(`task${id}`);
-            btn.innerText = "Đã hoàn thành ✔";
+            btn.innerText = "Đã xong ✔";
             btn.classList.add("completed");
 
-            checkAllTasks();
-        }
-
-        function checkAllTasks() {
             if (completedTasks[1] && completedTasks[2] && completedTasks[3]) {
                 document.getElementById('getkeyContainer').classList.add('unlocked');
                 document.getElementById('lockNotice').style.display = 'none';
             }
         }
 
-        async function startGetKey(endpoint) {
+        async function startGetKey() {
+            // Zytron tạm dùng luồng novax hoặc start tuỳ bạn map ở backend
+            const endpoint = (currentMode === 'phantom') ? '/api/start' : '/api/start-novax';
             try {
                 const res = await fetch(`${BACKEND_URL}${endpoint}`);
                 const data = await res.json();
@@ -265,6 +373,8 @@
                 alert("Lỗi kết nối tới máy chủ! Vui lòng thử lại.");
             }
         }
+
+        loadStockStats();
     </script>
 </body>
 </html>
