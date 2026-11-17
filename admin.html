@@ -43,14 +43,13 @@
 
         .admin-header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         .admin-header h2 { 
             margin: 0 0 6px; 
             color: #34d399; 
             font-size: 22px; 
             font-weight: 800; 
-            letter-spacing: 0.5px;
         }
         .admin-header p { 
             margin: 0; 
@@ -58,23 +57,19 @@
             font-size: 13px; 
         }
 
-        /* Thống kê kho */
         .stats-box { 
             background: rgba(15, 23, 42, 0.65); 
             border: 1px solid rgba(255, 255, 255, 0.1); 
             padding: 14px; 
             border-radius: 16px; 
-            margin-bottom: 20px; 
+            margin-bottom: 18px; 
             text-align: center; 
             font-size: 13px; 
             font-weight: 600; 
         }
-        .stats-box span {
-            color: #38bdf8;
-            font-weight: 800;
-        }
+        .stats-box span { color: #38bdf8; font-weight: 800; }
 
-        .form-group { margin-bottom: 16px; }
+        .form-group { margin-bottom: 15px; }
         label { display: block; margin-bottom: 6px; font-size: 12px; font-weight: 700; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.5px; }
         
         input, textarea { 
@@ -90,7 +85,7 @@
             transition: 0.2s;
         }
         input:focus, textarea:focus { border-color: #34d399; box-shadow: 0 0 10px rgba(52, 211, 153, 0.2); }
-        textarea { height: 110px; resize: vertical; }
+        textarea { height: 90px; resize: vertical; }
 
         .btn-group {
             display: grid;
@@ -101,12 +96,12 @@
 
         button { 
             width: 100%; 
-            padding: 13px; 
+            padding: 12px; 
             border: none; 
             border-radius: 14px; 
             font-weight: 800; 
             cursor: pointer; 
-            font-size: 14px; 
+            font-size: 13px; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -119,11 +114,23 @@
         .btn-phantom { background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; }
         .btn-novax { background: linear-gradient(135deg, #10b981, #059669); color: #fff; }
         .btn-zytron { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: #fff; }
+        
+        /* Nút xóa màu đỏ */
+        .btn-del-phantom { background: rgba(59, 130, 246, 0.2); border: 1px solid #3b82f6; color: #93c5fd; }
+        .btn-del-novax { background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #6ee7b7; }
+        .btn-del-zytron { background: rgba(139, 92, 246, 0.2); border: 1px solid #8b5cf6; color: #c4b5fd; }
+
+        .divider {
+            border: 0;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 20px 0;
+        }
 
         .back-home {
             display: block;
             text-align: center;
-            margin-top: 18px;
+            margin-top: 15px;
             color: #94a3b8;
             text-decoration: none;
             font-size: 13px;
@@ -138,7 +145,7 @@
     <div class="admin-card">
         <div class="admin-header">
             <h2>⚡ QUẢN TRỊ HỆ THỐNG</h2>
-            <p>Nạp kho key tự động cho các gói dịch vụ</p>
+            <p>Nạp và quản lý kho key tự động</p>
         </div>
         
         <div class="stats-box" id="statsBox">
@@ -167,6 +174,25 @@
             </button>
         </div>
 
+        <hr class="divider">
+
+        <div class="form-group">
+            <label style="color: #f87171;"><i class="fa-solid fa-trash-arrow-up"></i> Xóa Nhầm Key Gần Nhất:</label>
+            <input type="number" id="removeCountInput" placeholder="Nhập số lượng key muốn xóa (vd: 24)..." min="1">
+        </div>
+
+        <div class="btn-group">
+            <button class="btn-del-phantom" onclick="removeRecentKeys('phantom')">
+                <i class="fa-solid fa-trash"></i> Xóa bớt kho Phantom gần nhất
+            </button>
+            <button class="btn-del-novax" onclick="removeRecentKeys('novax')">
+                <i class="fa-solid fa-trash"></i> Xóa bớt kho Novax gần nhất
+            </button>
+            <button class="btn-del-zytron" onclick="removeRecentKeys('zytron')">
+                <i class="fa-solid fa-trash"></i> Xóa bớt kho Zytron gần nhất
+            </button>
+        </div>
+
         <a href="https://toiyeumeban.site" class="back-home">
             <i class="fa-solid fa-arrow-left"></i> Quay lại trang chủ Getkey
         </a>
@@ -181,7 +207,7 @@
                 const data = await res.json();
                 if (data.success) {
                     document.getElementById('statsBox').innerHTML = 
-                        `📦 Kho Phantom: <span>${data.totalKeys}</span> | 🛡️ Novax: <span>${data.totalNovaxKeys}</span> | ⚡ Zytron: <span>${data.totalZytronKeys || 0}</span>`;
+                        `📦 Phantom: <span>${data.totalKeys}</span> | 🛡️ Novax: <span>${data.totalNovaxKeys}</span> | ⚡ Zytron: <span>${data.totalZytronKeys || 0}</span>`;
                 }
             } catch (e) {
                 document.getElementById('statsBox').innerText = "❌ Không thể kết nối tới máy chủ!";
@@ -210,6 +236,32 @@
                 alert(data.message);
                 if (data.success) {
                     document.getElementById('keyInput').value = '';
+                    loadStats();
+                }
+            } catch (e) {
+                alert("Lỗi kết nối tới máy chủ!");
+            }
+        }
+
+        async function removeRecentKeys(type) {
+            const pass = document.getElementById('adminPass').value;
+            const count = document.getElementById('removeCountInput').value;
+
+            if (!pass) return alert("Vui lòng nhập mật khẩu admin!");
+            if (!count || count <= 0) return alert("Vui lòng nhập số lượng key cần xóa chính xác!");
+
+            if (!confirm(`Bạn có chắc chắn muốn xóa ${count} key được nạp gần nhất của kho này không?`)) return;
+
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/admin/remove-recent-keys`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ pass, count, type })
+                });
+                const data = await res.json();
+                alert(data.message);
+                if (data.success) {
+                    document.getElementById('removeCountInput').value = '';
                     loadStats();
                 }
             } catch (e) {
