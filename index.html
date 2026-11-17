@@ -75,7 +75,6 @@
         .category-trigger:hover { border-color: #34d399; }
         .cat-trigger-left { display: flex; align-items: center; gap: 12px; }
         
-        /* Ảnh bo tròn cho danh mục */
         .cat-img-box {
             width: 38px; height: 38px; border-radius: 50%;
             object-fit: cover; border: 1.5px solid rgba(255, 255, 255, 0.3);
@@ -119,6 +118,7 @@
             padding: 15px; font-size: 15px; font-weight: 800; border-radius: 16px; cursor: pointer;
             box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35); display: flex; align-items: center; justify-content: center; gap: 8px;
         }
+
         .modal-overlay {
             position: fixed; inset: 0; background: rgba(0, 0, 0, 0.65);
             backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
@@ -222,8 +222,9 @@
                 </button>
             </div>
         </div>
-  </div>
-      <div class="modal-overlay" id="categoryModal" onclick="closeCategoryModal(event)">
+    </div>
+
+    <div class="modal-overlay" id="categoryModal" onclick="closeCategoryModal(event)">
         <div class="bottom-sheet" onclick="event.stopPropagation()">
             <div class="sheet-handle"></div>
             <div class="sheet-title"><i class="fa-solid fa-list"></i> CHỌN DANH MỤC</div>
@@ -275,9 +276,9 @@
                 const res = await fetch(`${BACKEND_URL}/api/admin/stats`);
                 const data = await res.json();
                 if (data.success) {
-                    stockData.phantom = data.totalKeys;
-                    stockData.novax = data.totalNovaxKeys;
-                    stockData.zytron = data.totalNovaxKeys; // Tạm dùng chung kho novax hoặc tùy chỉnh nếu tạo schema riêng
+                    stockData.phantom = data.totalKeys ?? 0;
+                    stockData.novax = data.totalNovaxKeys ?? 0;
+                    stockData.zytron = data.totalZytronKeys ?? 0;
                     updateProductUI();
                 }
             } catch (e) {
@@ -359,8 +360,10 @@
         }
 
         async function startGetKey() {
-            // Zytron tạm dùng luồng novax hoặc start tuỳ bạn map ở backend
-            const endpoint = (currentMode === 'phantom') ? '/api/start' : '/api/start-novax';
+            let endpoint = '/api/start';
+            if (currentMode === 'novax') endpoint = '/api/start-novax';
+            if (currentMode === 'zytron') endpoint = '/api/start-zytron';
+
             try {
                 const res = await fetch(`${BACKEND_URL}${endpoint}`);
                 const data = await res.json();
